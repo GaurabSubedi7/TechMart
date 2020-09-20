@@ -13,6 +13,11 @@
     Route::get('login',function(){
         UserController::showLogin('login');
     });
+
+    Route::post('login',function(){
+        UserController::postLogin($_POST);
+    });
+
     Route::get('signup',function(){
         UserController::showSignup('signup');
     });
