@@ -10,5 +10,12 @@
         {
             self::createView($route);
         }
+
+        public static function showUsers($route)
+        {
+            $users = UserModel::listUsers();
+            $data = ['users'=>$users];
+            self::createView($route, $data);
+        }
     }
 ?>

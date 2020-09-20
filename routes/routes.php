@@ -2,18 +2,22 @@
     // require_once './classes/Route.php';
     // require_once './controllers/controller.php';
     
-    Route::set('index.php', function(){
+    Route::get('index.php', function(){
         IndexController::createView('home');
     });
 
-    Route::set('list_products',function(){
+    Route::get('list_products',function(){
         ProductController::showItem('list_products');
     });
 
-    Route::set('login',function(){
+    Route::get('login',function(){
         UserController::showLogin('login');
     });
-    Route::set('signup',function(){
+    Route::get('signup',function(){
         UserController::showSignup('signup');
+    });
+
+    Route::get('list_users',function(){
+        UserController::showUsers('list_users');
     });
 ?>
