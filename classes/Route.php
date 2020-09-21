@@ -3,16 +3,7 @@
 
         public static $validRoute = array();
 
-        protected $routes = [
-            'GET' => [],
-            'POST' => []
-        ];
-        public static function uri(){
-            return trim(
-                parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH),
-                '/'
-            );
-        }    
+        
         public static function get($routes, $function){
             self::$validRoute[] = $routes;
             // print_r(self::$validRoute);

@@ -7,7 +7,7 @@
             $host='localhost';
             $user='root';
             $pass='';   
-            $db='tm';
+            $db='techmart';
             try
             {
                 $dsn = "mysql:host=$host;dbname=$db";

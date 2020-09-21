@@ -1,0 +1,27 @@
+header{
+    background: url('../img/drone_sunset.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 1000px;
+}
+
+@media screen and (max-width: 700px){
+    header{
+        min-height: 500px;
+    }
+}
+
+.section{
+    padding-top: 4vw;
+    padding-bottom: 4vw;
+}
+
+.logo{
+    height: 150px;
+    width: 150px;
+}
+
+/* To make navbar sticked on the top. But this looked not so nice. So I'm removing this */
+/* .nav{
+    position:fixed;
+} */

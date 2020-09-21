@@ -14,15 +14,19 @@
         UserController::showLogin('login');
     });
 
-    Route::post('login',function(){
-        UserController::postLogin($_POST);
-    });
-
     Route::get('signup',function(){
         UserController::showSignup('signup');
     });
 
     Route::get('list_users',function(){
         UserController::showUsers('list_users');
+    });
+
+    Route::post('login',function(){
+        UserController::postLogin($_POST,"login");//$_POST sends all post data and login is the button name
+    });
+
+    Route::post('signup',function(){
+        UserController::postSignup($_POST,"signup");
     });
 ?>
