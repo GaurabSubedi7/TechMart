@@ -18,5 +18,19 @@
             return $user_Detail;
         }
 
+        public static function addUser($data)
+        {
+            $st = self::$pdo->prepare("insert into users (first_name,last_name,username,email,phone_number,status,password,address) values(:first_name,:last_name,:username,:email,:number,1,:password,:address)");
+           $st->bindParam(":first_name",$data['first_name']);
+           $st->bindParam(":last_name",$data['last_name']);
+           $st->bindParam(":username",$data['username']);
+           $st->bindParam(":email",$data['email']);
+           $st->bindParam(":number",$data['phone_number']);
+           $st->bindParam(":password",$data['password']);
+           $st->bindParam(":address",$data['address']);
+         $st->execute();
+           return 1;
+        }
+
     }   
 ?>

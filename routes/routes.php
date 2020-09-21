@@ -22,6 +22,11 @@
         UserController::showSignup('signup');
     });
 
+    Route::post('signup',function(){
+        UserController::postSignup($_POST);
+    });
+
+
     Route::get('list_users',function(){
         UserController::showUsers('list_users');
     });

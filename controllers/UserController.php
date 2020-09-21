@@ -20,6 +20,7 @@
 
         public static function postLogin($post)
         {
+            if($post){
             $checkUser_Status = UserModel::checkUser($post['name'],$post['password']);
             //var_dump($checkUser_Status);
             if($checkUser_Status)
@@ -29,7 +30,17 @@
             else{
                 echo "Invalid credential";
             }
+        }
+
+    }
+
+        public static function postSignup($post)
+        {
+            $stat = 0;
+           $stat = UserModel::addUser($post);
+           
+        }
 
         }
-    }
+    
 ?>
