@@ -25,3 +25,7 @@ header{
 /* .nav{
     position:fixed;
 } */
+
+.active, .navlist:hover{
+    border-bottom: 1px solid white;
+}
