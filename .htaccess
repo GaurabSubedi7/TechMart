@@ -1,2 +1,15 @@
 RewriteEngine On
-RewriteRule ^([^/]+)/? index.php?url=$1 [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !(.*).css
+RewriteCond %{REQUEST_FILENAME} !(.*).js
+RewriteCond %{REQUEST_FILENAME} !(.*).jpg
+RewriteCond %{REQUEST_FILENAME} !(.*).png
+RewriteCond %{REQUEST_FILENAME} !(.*).gif
+RewriteCond %{REQUEST_FILENAME} !(.*).mp4
+RewriteCond %{REQUEST_FILENAME} !(.*).ogg
+RewriteCond %{REQUEST_FILENAME} !(.*).ico
+RewriteCond %{REQUEST_FILENAME} !(.*).zip
+RewriteCond %{REQUEST_FILENAME} !(.*).tar
+RewriteCond %{REQUEST_FILENAME} !(.*).gzip
+RewriteCond %{REQUEST_FILENAME} !(.*).docx
+RewriteRule ^(.+)$ index.php?url=$1 [L,QSA]
