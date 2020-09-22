@@ -1,5 +1,7 @@
 $(document).ready(function(){
     $('.sidenav').sidenav();
+    $('.parallax').parallax();
+    $('.materialboxed').materialbox();
 });
 
 var header = document.getElementById("navlist");

@@ -17,15 +17,15 @@ header{
 }
 
 .logo{
-    height: 150px;
-    width: 150px;
+    height: 200px;
+    width: 200px;
 }
 
 /* To make navbar sticked on the top. But this looked not so nice. So I'm removing this */
-/* .nav{
+/* .homenav{
     position:fixed;
 } */
 
-.active, .navlist:hover{
+.active, .homenavlist:hover{
     border-bottom: 1px solid white;
 }
