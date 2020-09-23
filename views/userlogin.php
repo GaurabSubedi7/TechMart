@@ -28,10 +28,10 @@
             </div>
             <div class="col s12 m8 l8 offset-m2 offset-l2">
                 <div class="container my-container">
-                    <form action="" method="post">
+                        <form action="" method="post">
                         <div class="input-field">
                             <i class="fa fa-user prefix"></i>
-                            <input type="text" name="name" id="username" autocomptete="off">
+                            <input type="text" name="username" id="username" autocomptete="off">
                             <label for="username">Username</label>
                         </div>
                         <div class="input-field">
@@ -43,6 +43,7 @@
                             <input type="submit" class="btn center" name="login" value="Log in">
                         </div>
                     </form>
+                    <div class="error"></div>
                 </div>
             </div>
             <div class="col s12 l12 center-align section">

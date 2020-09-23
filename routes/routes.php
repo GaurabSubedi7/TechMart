@@ -10,6 +10,10 @@
         ProductController::showItem('list_products');
     });
 
+    Route::get('logout',function(){
+        UserController::logoutUser('logout');
+    });
+
     Route::get('userlogin',function(){
         UserController::showLogin('userlogin');
     });

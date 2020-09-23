@@ -32,7 +32,10 @@
             $st->bindParam(":pass",$password);
             $st->execute();
             $user_Detail = $st->fetch();
-            return $user_Detail;
+            if($user_Detail){
+                 return $user_Detail;
+            }
+           
         }
 
         public static function addUser($data)
