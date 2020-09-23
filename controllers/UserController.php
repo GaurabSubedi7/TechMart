@@ -42,9 +42,14 @@
                 $checkinguser = UserModel::checkUser($post['username']);
                 if($checkinguser==1)
                 {
+                    // need to redirect somewhere after signup. i tried and didnot work :(
+                    //tried to use header tag from above and gave error. 
+                    //if you are trying to redirect it somewhere..pls redirect it to userlogin.
                     $stat = 0;
                     $stat = UserModel::addUser($post);
-
+                }
+                else if(empty($post['username'])){
+                    echo "cannot have empty username";
                 }
                 else
                 {

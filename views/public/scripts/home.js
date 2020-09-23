@@ -1,6 +1,7 @@
 $(document).ready(function(){
     $('.sidenav').sidenav();
     $('.parallax').parallax();
+    $('.scrollspy').scrollSpy();
     $('.dropdown-trigger').dropdown();
     $('.materialboxed').materialbox();
   });
