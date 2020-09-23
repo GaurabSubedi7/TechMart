@@ -21,7 +21,7 @@
         public static function postLogin($post,$btnName)
         {
             if (isset($_POST[$btnName])){
-            $checkUser_Status = UserModel::checkUser($post['name'],$post['password']);
+            $checkUser_Status = UserModel::userLogin($post['name'],$post['password']);
             //var_dump($checkUser_Status);
             if($checkUser_Status)
             {
@@ -36,11 +36,19 @@
     }
 
         public static function postSignup($post,$btnName)
-        { if (isset($_POST[$btnName]))
+        { 
+            if (isset($_POST[$btnName]))
             {
+                $checkinguser = UserModel::checkUser($post['username']);
+                if($checkinguser==1)
+                {
             $stat = 0;
             $stat = UserModel::addUser($post);
-           
+                }
+                else
+                {
+                    echo "Username exists";
+                }
             }
         }
 
