@@ -28,10 +28,10 @@
             </div>
             <div class="col s12 m8 l8 offset-m2 offset-l2">
                 <div class="container my-container">
-                    <form action="" method="post" autocomplete="off">
+                        <form action="" method="post">
                         <div class="input-field">
                             <i class="fa fa-user prefix"></i>
-                            <input type="text" name="name" id="username">
+                            <input type="text" name="username" id="username" autocomptete="off">
                             <label for="username">Username</label>
                         </div>
                         <div class="input-field">
@@ -40,13 +40,14 @@
                             <label for="password">Password</label>
                         </div>
                         <div class="input-field center">
-                            <input type="submit" class="btn center" name="userlogin" value="Log in">
+                            <input type="submit" class="btn center" name="login" value="Log in">
                         </div>
                     </form>
+                    <div class="error"></div>
                 </div>
             </div>
             <div class="col s12 l12 center-align section">
-                <h6 class="white-text">Don't have an account? <a href="usersignup">Create an account.</a></h6>
+                <h6 class="white-text">Don't have an account? <a href="">Create an account.</a></h6>
             </div>
         </div>
     </div>

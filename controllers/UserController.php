@@ -11,21 +11,29 @@
             self::createView($route);
         }
 
+        public static function logoutUser($route)
+        {
+            self::createView($route);
+        }
+
         public static function showUsers($route)
         {
             $users = UserModel::listUsers();
             $data = ['users'=>$users];
             self::createView($route, $data);
         }
+      
 
         public static function postLogin($post,$btnName)
         {
             if (isset($_POST[$btnName])){
-                $checkUser_Status = UserModel::userLogin($post['name'],$post['password']);
+                $checkUser_Status = UserModel::userLogin($post['username'],$post['password']);
                 //var_dump($checkUser_Status);
                 if($checkUser_Status)
                 {
-                    header("Location: http://localhost/TechMart/list_products", TRUE, 301);
+                   // $_SESSION['logged_user'] = $checkinguser_status['username'];
+                   $_SESSION['logged_user'] =  $checkUser_Status['username'];
+                    header("Location: http://localhost/TechMart/", TRUE, 301);
                     exit();
                 }
                 else{

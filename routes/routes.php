@@ -10,34 +10,37 @@
         ProductController::showItem('list_products');
     });
 
-    /* ---------------- User login ----------------- */
-    
+    Route::get('logout',function(){
+        UserController::logoutUser('logout');
+    });
+
     Route::get('userlogin',function(){
         UserController::showLogin('userlogin');
     });
     
-    Route::post('userlogin',function(){
-        UserController::postLogin($_POST,"userlogin");//$_POST sends all post data and login is the button name
+    Route::get('login',function(){
+        UserController::showLogin('login');
     });
-    
-    /* ------------------------------------------------ */
-    
-    
-    /* ---------------- User signup ----------------- */
-    
-    Route::get('usersignup',function(){
-        UserController::showSignup('usersignup');
+
+    Route::get('signup',function(){
+        UserController::showSignup('signup');
     });
-    
-    Route::post('usersignup',function(){
-        UserController::postSignup($_POST,"usersignup");
-    });
-    
-    /* ------------------------------------------------ */
 
     Route::get('list_users',function(){
         UserController::showUsers('list_users');
     });
+
+    Route::post('userlogin',function(){
+        UserController::postLogin($_POST,"login");//$_POST sends all post data and login is the button name
+    });
+
+    Route::post('signup',function(){
+        UserController::postSignup($_POST,"signup");
+    });
+
+    // Route::get('userlogin', function(){
+    //     IndexController::createView('userlogin');
+    // });
 
     Route::get('vendorlogin', function(){
         IndexController::createView('vendorlogin');
