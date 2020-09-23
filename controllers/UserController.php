@@ -21,16 +21,16 @@
         public static function postLogin($post,$btnName)
         {
             if (isset($_POST[$btnName])){
-            $checkUser_Status = UserModel::userLogin($post['name'],$post['password']);
-            //var_dump($checkUser_Status);
-            if($checkUser_Status)
-            {
-                header("Location: http://localhost/TechMart/list_products", TRUE, 301);
-                exit();
-            }
-            else{
-                echo "Invalid credential";
-            }
+                $checkUser_Status = UserModel::userLogin($post['name'],$post['password']);
+                //var_dump($checkUser_Status);
+                if($checkUser_Status)
+                {
+                    header("Location: http://localhost/TechMart/list_products", TRUE, 301);
+                    exit();
+                }
+                else{
+                    echo "Invalid credential";
+                }
         }
 
     }
@@ -42,8 +42,9 @@
                 $checkinguser = UserModel::checkUser($post['username']);
                 if($checkinguser==1)
                 {
-            $stat = 0;
-            $stat = UserModel::addUser($post);
+                    $stat = 0;
+                    $stat = UserModel::addUser($post);
+
                 }
                 else
                 {

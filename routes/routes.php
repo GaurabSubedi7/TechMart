@@ -10,6 +10,10 @@
         ProductController::showItem('list_products');
     });
 
+    Route::get('userlogin',function(){
+        UserController::showLogin('userlogin');
+    });
+    
     Route::get('login',function(){
         UserController::showLogin('login');
     });
@@ -22,7 +26,7 @@
         UserController::showUsers('list_users');
     });
 
-    Route::post('login',function(){
+    Route::post('userlogin',function(){
         UserController::postLogin($_POST,"login");//$_POST sends all post data and login is the button name
     });
 
@@ -30,9 +34,9 @@
         UserController::postSignup($_POST,"signup");
     });
 
-    Route::get('userlogin', function(){
-        IndexController::createView('userlogin');
-    });
+    // Route::get('userlogin', function(){
+    //     IndexController::createView('userlogin');
+    // });
 
     Route::get('vendorlogin', function(){
         IndexController::createView('vendorlogin');

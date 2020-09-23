@@ -1,8 +1,9 @@
 $(document).ready(function(){
     $('.sidenav').sidenav();
     $('.parallax').parallax();
+    $('.dropdown-trigger').dropdown();
     $('.materialboxed').materialbox();
-});
+  });
 
 var header = document.getElementById("navlist");
 var btns = header.getElementsByClassName("navlist");
