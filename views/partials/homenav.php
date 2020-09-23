@@ -6,13 +6,13 @@
         </a>
         <ul class="right hide-on-med-and-down" id="homenavlist">
             <li><a href="#" class="homenavlist waves-effect waves-light active">About</a></li>
-            <li><a href="#" class="homenavlist waves-effect waves-light">Shop With Us</a></li>
-            <li><a href="#" class="homenavlist waves-effect waves-light">Sell With Us</a></li>
+            <li><a href="list_products" class="homenavlist waves-effect waves-light">Shop With Us</a></li>
+            <li><a href="vendorlogin" class="homenavlist waves-effect waves-light">Sell With Us</a></li>
         </ul>
         <ul class="sidenav grey lighten-2" id="mobile-menu">
             <li><a href="#" class="waves-effect waves-light">About</a></li>
-            <li><a href="#" class="waves-effect waves-light">Shop With Us</a></li>
-            <li><a href="#" class="waves-effect waves-light">Sell With Us</a></li>
+            <li><a href="userlogin" class="waves-effect waves-light">Shop With Us</a></li>
+            <li><a href="vendorlogin" class="waves-effect waves-light">Sell With Us</a></li>
         </ul>
     </div>
 </nav>
