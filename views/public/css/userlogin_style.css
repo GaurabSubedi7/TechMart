@@ -25,6 +25,20 @@
     border-radius: 20px;
 }
 
+.hideShowPassword-wrapper{
+    position: relative;
+    display: inline-block;
+    vertical-align: baseline;
+    width: 100%!important;
+}
+
+
+.hideShowPassword-field{
+    margin: 0px;
+    padding-right: 0!important;
+    background-color: white;
+}   
+
 /* .input-field input:focus + label{
     color: red !important;
   }
