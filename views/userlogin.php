@@ -28,7 +28,7 @@
             </div>
             <div class="col s12 m8 l8 offset-m2 offset-l2">
                 <div class="container my-container">
-                        <form action="" method="post" autocomptete="off">
+                    <form action="" method="post" autocomptete="off">
                         <div class="input-field">
                             <i class="fa fa-user prefix"></i>
                             <input type="text" name="username" id="username" autocomptete="off">
@@ -47,7 +47,7 @@
                 </div>
             </div>
             <div class="col s12 l12 center-align section">
-                <h6 class="white-text">Don't have an account? <a href="">Create an account.</a></h6>
+                <h6 class="white-text">Don't have an account? <a href="usersignup">Create an account.</a></h6>
             </div>
         </div>
     </div>

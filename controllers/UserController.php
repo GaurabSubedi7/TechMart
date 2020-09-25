@@ -50,14 +50,10 @@
                 $checkinguser = UserModel::checkUser($post['username']);
                 if($checkinguser==1)
                 {
-                    // need to redirect somewhere after signup. i tried and didnot work :(
-                    //tried to use header tag from above and gave error. 
-                    //if you are trying to redirect it somewhere..pls redirect it to userlogin.
                     $stat = 0;
                     $stat = UserModel::addUser($post);
                     $_SESSION['logged_user'] = $post['username'];
-                    header("Location: http://localhost/TechMart/", TRUE, 301);//maybe your path was different
-                    //nonono it's working for signin..just the signup is acting kinda sus.
+                    // i redirected from the form itself ;) no problemo
                 }
                 else if(empty($post['username'])){
                     echo "cannot have empty username";
