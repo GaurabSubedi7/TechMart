@@ -29,3 +29,7 @@ header{
 .active, .homenavlist:hover{
     border-bottom: 1px solid white;
 }
+.section{
+    padding-top: 4vw;
+    padding-bottom: 4vw;
+}

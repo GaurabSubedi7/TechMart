@@ -8,14 +8,34 @@
             $users = $st->fetchall();
             return $users;
         }
-        public static function checkUser($username,$password)
+
+        public static function checkUser($username)
+        {
+            $st = self::$pdo->prepare("select * from users where username:user");
+            $st->bindParam(":user",$username);
+            $st->execute();
+            $users = $st->fetchall();
+            if($users)
+            {
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
+        }
+
+        public static function userLogin($username,$password)
         {
             $st = self::$pdo->prepare("select * from users where username=:user and password=:pass");
             $st->bindParam(":user",$username);
             $st->bindParam(":pass",$password);
             $st->execute();
             $user_Detail = $st->fetch();
-            return $user_Detail;
+            if($user_Detail){
+                 return $user_Detail;
+            }
+           
         }
 
         public static function addUser($data)

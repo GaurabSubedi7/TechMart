@@ -1,0 +1,47 @@
+
+.loginpage{
+    background: url('../img/town.jpg');
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: blur(9px);
+    height: 740px;
+}
+
+.input-field input{
+    color: white;
+}
+
+.input-field .prefix{
+    border-bottom: none;
+}
+
+.input-field label{
+    border-bottom: none;
+}
+
+.my-container{
+    background: rgb(0, 0, 0, .6);
+    padding: 3vw 6vw 3vw 5vw;
+    border-radius: 20px;
+}
+
+.hideShowPassword-wrapper{
+    position: relative;
+    display: inline-block;
+    vertical-align: baseline;
+    width: 100%!important;
+}
+
+.hideShowPassword-field{
+    margin: 0px;
+    padding-right: 0!important;
+}   
+
+/* .input-field input:focus + label{
+    color: red !important;
+  }
+
+.row .input-field input:focus {
+    border-bottom: 1px solid red !important;
+    box-shadow: 0 1px 0 0 red !important
+} */

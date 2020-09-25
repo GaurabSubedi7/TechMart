@@ -1,8 +1,10 @@
 $(document).ready(function(){
     $('.sidenav').sidenav();
     $('.parallax').parallax();
+    $('.scrollspy').scrollSpy();
+    $('.dropdown-trigger').dropdown();
     $('.materialboxed').materialbox();
-});
+  });
 
 var header = document.getElementById("navlist");
 var btns = header.getElementsByClassName("navlist");

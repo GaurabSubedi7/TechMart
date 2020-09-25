@@ -3,14 +3,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <!-- local css -->
     <link rel="stylesheet" type="text/css" href="./views/public/css/style.css">
+
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
     <!-- font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <title>TechMart</title>
 </head>
 <body>
@@ -35,7 +40,7 @@
     <!-- parallax -->
     <div class="parallax-container">
       <div class="parallax">
-          <img src="./views/public/img/stars.jpg" alt="" class="responsive-img">
+          <img src="./views/public/img/town.jpg" alt="" class="responsive-img">
       </div>
     </div>
 
@@ -47,8 +52,11 @@
 
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- custom javascript -->
     <script src="./views/public/scripts/home.js"></script>
 </body>
 </html>
