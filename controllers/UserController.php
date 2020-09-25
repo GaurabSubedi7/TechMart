@@ -55,6 +55,8 @@
                     //if you are trying to redirect it somewhere..pls redirect it to userlogin.
                     $stat = 0;
                     $stat = UserModel::addUser($post);
+                    $_SESSION['logged_user'] = $post['username'];
+                    header("Location: http://localhost/TechMart/", TRUE, 301);//maybe your path was different
                 }
                 else if(empty($post['username'])){
                     echo "cannot have empty username";
