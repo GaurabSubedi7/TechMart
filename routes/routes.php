@@ -15,11 +15,17 @@
     });
 
     Route::post('userlogin',function(){
-        UserController::postLogin($_POST,"userlogin");//$_POST sends all post data and login is the button name
+        //$_POST sends all post data and userlogin is the button name
+        UserController::postLogin($_POST,"userlogin");
     });
 
     Route::get('usersignup',function(){
         UserController::showLogin('usersignup');
+    });
+
+    Route::post('usersignup',function(){
+        //$_POST sends all post data and usersignup is the button name
+        UserController::postSignup($_POST,"usersignup");
     });
 
     Route::get('logout',function(){
