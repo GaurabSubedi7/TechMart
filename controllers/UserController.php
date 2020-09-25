@@ -53,7 +53,8 @@
                     $stat = 0;
                     $stat = UserModel::addUser($post);
                     $_SESSION['logged_user'] = $post['username'];
-                    // i redirected from the form itself ;) no problemo
+                    header("Location: http://localhost/TechMart/", TRUE, 301);
+                    ob_enf_flush();
                 }
                 else if(empty($post['username'])){
                     echo "cannot have empty username";
@@ -64,7 +65,5 @@
                 }
             }
         }
-
-        }
-    
+    }
 ?>

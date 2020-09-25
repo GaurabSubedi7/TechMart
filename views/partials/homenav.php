@@ -1,10 +1,9 @@
 <nav class="navwrapper homenav grey transparent">
     <div class="container">
-        <a href="#" class="brand-logo"><img src="./views/public/img/logo-techmart.png" alt="logo" class="responsive-img logo"></a>
+        <a href="/techmart" class="brand-logo"><img src="./views/public/img/logo-techmart.png" alt="logo" class="responsive-img logo"></a>
         <a href="" class="sidenav-trigger" data-target="mobile-menu">
             <i class="material-icons">menu</i>
         </a>
-        
         <ul class="right hide-on-med-and-down" id="homenavlist">
         <?php 
         if(empty($_SESSION['logged_user']))
@@ -15,7 +14,7 @@
             <li><a href="#" class="homenavlist waves-effect waves-light dropdown-trigger" data-target="dropme2">Sell With Us<i class="material-icons right">arrow_drop_down</i></a></li>
             <?php
         }else{
-        //  echo $_SESSION['logged_user'] ;
+         echo $_SESSION['logged_user'];
          ?>
         <li><a href="logout" class="homenavlist waves-effect waves-light active">logout</a></li>
             
