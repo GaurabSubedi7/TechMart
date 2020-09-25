@@ -57,6 +57,7 @@
                     $stat = UserModel::addUser($post);
                     $_SESSION['logged_user'] = $post['username'];
                     header("Location: http://localhost/TechMart/", TRUE, 301);//maybe your path was different
+                    //nonono it's working for signin..just the signup is acting kinda sus.
                 }
                 else if(empty($post['username'])){
                     echo "cannot have empty username";
