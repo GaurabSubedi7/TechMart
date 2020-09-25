@@ -9,14 +9,23 @@
     Route::get('list_products',function(){
         ProductController::showItem('list_products');
     });
+    
+    Route::get('userlogin',function(){
+        UserController::showLogin('userlogin');
+    });
+
+    Route::post('userlogin',function(){
+        UserController::postLogin($_POST,"userlogin");//$_POST sends all post data and login is the button name
+    });
+
+    Route::get('usersignup',function(){
+        UserController::showLogin('usersignup');
+    });
 
     Route::get('logout',function(){
         UserController::logoutUser('logout');
     });
 
-    Route::get('userlogin',function(){
-        UserController::showLogin('userlogin');
-    });
     
     Route::get('login',function(){
         UserController::showLogin('login');
@@ -30,9 +39,7 @@
         UserController::showUsers('list_users');
     });
 
-    Route::post('userlogin',function(){
-        UserController::postLogin($_POST,"login");//$_POST sends all post data and login is the button name
-    });
+    
 
     Route::post('signup',function(){
         UserController::postSignup($_POST,"signup");
