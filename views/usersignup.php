@@ -30,7 +30,7 @@
             </div>
             <div class="col s12 m10 l10 offset-m1 offset-l1">
                 <div class="container my-container">
-                    <form action="userlogin" method="post" autocomplete="off">
+                    <form action="" method="post" autocomplete="off">
                         <div class="row">
                             <div class="input-field col s6">
                                 <i class="material-icons prefix">face</i>

@@ -1,6 +1,6 @@
 <?php 
 session_start();
-
+ob_start();
     require_once './routes/routes.php';
     
     /* Loading all the classes in at once in the starting using __autoload().
