@@ -5,6 +5,7 @@
             <i class="material-icons">menu</i>
         </a>
         <ul class="right hide-on-med-and-down" id="homenavlist">
+        <li><a href="product" class="homenavlist waves-effect waves-light">Products</a></li>
         <?php
         $_SESSION['logged_member'] = NULL;
         if(!empty($_SESSION['logged_user'])){

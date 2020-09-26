@@ -17,5 +17,9 @@
              
             }
         }
+        public static function showProduct($route)
+        {
+            self::createView($route);
+        }
     }
 ?>

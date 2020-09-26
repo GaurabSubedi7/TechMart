@@ -15,7 +15,7 @@
     Route::set('list_users');
     Route::set('list_vendors');
     Route::set('notfound');
-    
+    Route::set('product');
 
     Route::get('index.php', function(){
         IndexController::createView('home');
@@ -23,6 +23,10 @@
 
     Route::get('list_products',function(){
         ProductController::showItem('list_products');
+    });
+
+    Route::get('product',function(){
+        ProductController::showProduct('product');
     });
 
     Route::post('list_products',function(){
