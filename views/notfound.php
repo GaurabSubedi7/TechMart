@@ -22,9 +22,12 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>404 Error</h1>
-        <h3>Page Not Found</h3>
+    <div class="row container">
+        <div class="container col s12 l6">
+            <?php echo $invalidroute; ?>
+            <h2><i class="material-icons small prefix danger-text">report_problem</i> 404</h2>
+            <h4>Page Not Found <br> I think you have lost the way.</h4>
+        </div>
     </div>
 </body>
 </html>
