@@ -16,17 +16,25 @@
     <title>404 not found</title>
     <style>
         body{
-            background: url("./views/public/img/notfound.png");
+            background: url("./views/public/img/notfound.jpg");
             background-position: center;
+            background-size: cover;
+            height: 650px;
+        }
+        @media screen and (max-width: 700px){
+            body{
+                min-height: 500px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="row container">
+    <div class="row container section">
         <div class="container col s12 l6">
-            <?php echo $invalidRoute; ?>
-            <h2><i class="material-icons small prefix danger-text">report_problem</i> 404</h2>
-            <h4>Page Not Found <br> I think you have lost the way.</h4>
+            <h1><i class="material-icons large prefix red-text left text-darken-4">report_problem</i> Oops!!!</h1>
+            <h4>404 Page Not Found</h4>
+            <h5>You weren't suppose to be here.</h5>
+            <a href="/TechMart" class="btn-large red darken-4">Go Back Home</a>
         </div>
     </div>
 </body>
