@@ -24,7 +24,7 @@
 <body>
     <div class="row container">
         <div class="container col s12 l6">
-            <?php echo $invalidroute; ?>
+            <?php echo $invalidRoute; ?>
             <h2><i class="material-icons small prefix danger-text">report_problem</i> 404</h2>
             <h4>Page Not Found <br> I think you have lost the way.</h4>
         </div>

@@ -1,7 +1,22 @@
 <?php
     // require_once './classes/Route.php';
     // require_once './controllers/controller.php';
+    // setting routes in the begining because of one simple to do but complicated to explain problem
+    // please leave it here!!
+    // and please set the route name like this in the beginning pls ;)
+    Route::set('index.php');
+    Route::set('home');
+    Route::set('list_products');
+    Route::set('userlogin');
+    Route::set('usersignup');
+    Route::set('vendorlogin');
+    Route::set('vendorsignup');
+    Route::set('logout');
+    Route::set('list_users');
+    Route::set('list_vendors');
+    Route::set('notfound');
     
+
     Route::get('index.php', function(){
         IndexController::createView('home');
     });
