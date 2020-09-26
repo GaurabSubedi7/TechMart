@@ -9,6 +9,10 @@
     Route::get('list_products',function(){
         ProductController::showItem('list_products');
     });
+
+    Route::post('list_products',function(){
+        ProductController::searchItem($_POST);
+    });
     
     Route::get('userlogin',function(){
         UserController::showLogin('userlogin');
