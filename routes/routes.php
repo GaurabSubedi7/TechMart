@@ -74,4 +74,8 @@
         VendorController::showVendors('list_vendors');
     });
 
+    Route::get('notfound', function(){
+        IndexController::createView('notfound');
+    });
+
 ?>

@@ -11,7 +11,10 @@
           
             if ($_GET['url'] == $routes){
                 $function->__invoke();
-            
+            }else{
+                $invalidRoute = ['invalidroute'=>$_GET['url']];
+                $_GET['url'] == 'notfound';
+                IndexController::createView('notfound',$invalidRoute);
             }
         }
 

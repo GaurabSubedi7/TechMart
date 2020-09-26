@@ -12,7 +12,7 @@
             if (isset($search_query['query'])) {
                 $result = ProductModel::getProduct($search_query['query']);
                // var_dump($result);
-             $data = ['products'=>$result];
+                $data = ['products'=>$result];
                 self::createView('list_products', $data);
              
             }
