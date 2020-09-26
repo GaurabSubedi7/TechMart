@@ -6,7 +6,7 @@
 
     <!-- local css -->
     <link rel="stylesheet" type="text/css" href="./views/public/css/style.css">
-    <link rel="stylesheet" type="text/css" href="./views/public/css/usersignup_style.css">
+    <link rel="stylesheet" type="text/css" href="./views/public/css/vendorsignup_style.css">
 
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -31,21 +31,10 @@
             <div class="col s12 m10 l10 offset-m1 offset-l1">
                 <div class="container my-container">
                     <form action="" method="post" autocomplete="off">
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <i class="material-icons prefix">face</i>
-                                <input type="text" name="first_name" id="first_name">
-                                <label for="first_name">First Name</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input type="text" name="last_name" id="last_name">
-                                <label for="last_name">Last Name</label>
-                            </div>
-                        </div>
                         <div class="input-field">
                             <i class="fa fa-user prefix"></i>
-                            <input type="text" name="username" id="username">
-                            <label for="username">Username</label>
+                            <input type="text" name="vendor_name" id="vendor_name">
+                            <label for="vendor_name">Vendor Name/ Company Name</label>
                         </div>
                         <div class="input-field">
                             <i class="fa fa-phone prefix"></i>
@@ -73,7 +62,7 @@
                             <label for="confirmpassword">Confirm Password</label>
                         </div>
                         <div class="input-field center">
-                            <input type="submit" class="btn center" name="usersignup" value="Sign Up">
+                            <input type="submit" class="btn center" name="vendorsignup" value="Sign Up">
                         </div>
                     </form>
                 </div>

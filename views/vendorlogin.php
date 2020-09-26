@@ -6,7 +6,7 @@
 
     <!-- local css -->
     <link rel="stylesheet" type="text/css" href="./views/public/css/style.css">
-    <link rel="stylesheet" type="text/css" href="./views/public/css/vendorstyle.css">
+    <link rel="stylesheet" type="text/css" href="./views/public/css/vendorlogin_style.css">
 
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -17,117 +17,39 @@
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <title>Seller Login</title>
-    <style>
-        .tabs .indicator{
-        background-color: #000;
-        }
-        .tabs .tab a:focus, .tabs .tab a:focus.active{
-        background: transparent;
-        }
-        .input-field .prefix{
-            border-bottom: none;
-        }
-        .input-field label{
-            border-bottom: none;
-        }
-    </style>
+    <title>userlogin</title>
 </head>
-<body class="sellerpage">
-    <div class="container section">
-        <!-- main registration page -->
-
-        <!-- part 1 -->
-        <div class="row section">
-            <div class="col s12 l5">
-                <a href="/techmart"><img src="./views/public/img/logo-techmart.png" alt="" class="responsive-img"></a>
-                <div class="card">
-                    <div class="card-content grey darken-4 z-depth-4">
-                        <span class="card-title center-align grey-text text-lighten-1"><h3>WELCOME TO SELLER CENTER</h3></span>
-                        <h5 class="center-align orange-text text-darken-2"><br>3 Simple Steps To Sell On TechMart<br></h5>
-                        <i class="section material-icons left grey-text text-lighten-1">looks_one</i>
-                        <h6 class="section grey-text text-lighten-1">Sign Up</h6>
-                        <i class="section material-icons left grey-text text-lighten-1">looks_two</i>
-                        <h6 class="section grey-text text-lighten-1">Upload product to start selling </h6>
-                        <i class="section material-icons left grey-text text-lighten-1">looks_3</i>
-                        <h6 class="section grey-text text-lighten-1">Adopt tools to maximize sales</h6>
-                    </div>
+<body class="loginpage">
+    <div class="container">
+        <a href="/TechMart"><img src="./views/public/img/logo-techmart.png" alt="logo" class="responsive-img"></a>
+        <div class="row">
+            <div class="col s12 l12">
+                <h3 class="white-text center-align"><b>Login</b></h3>
+            </div>
+            <div class="col s12 m8 l8 offset-m2 offset-l2">
+                <div class="container my-container">
+                    <form action="" method="post" autocomptete="off">
+                        <div class="input-field">
+                            <i class="fa fa-user prefix"></i>
+                            <input type="text" name="vendor_name" id="username" autocomptete="off">
+                            <label for="username">Username</label>
+                        </div>
+                        <div class="input-field">
+                            <i class="fa fa-key prefix"></i>
+                            <input type="password" name="password" id="password"></input>
+                            <label for="password">Password</label>
+                        </div>
+                        <div class="input-field center">
+                            <input type="submit" class="btn center" name="vendorlogin" value="Log in">
+                        </div>
+                    </form>
+                    <div class="error"></div>
                 </div>
             </div>
-
-            <!-- part 2-1 -->
-
-            <div class="col s12 l6 offset-l1">
-            <ul class="tabs">
-                <li class="tab col s6">
-                    <a href="#seller_login" class="grey-text text-darken-4">Login</a>
-                </li>
-                <li class="tab col s6">
-                    <a href="#seller_signup" class="grey-text text-darken-4">Sign Up</a>
-                </li>
-            </ul>
-
-            <!-- part 2-2 -->
-
-            <div class="col s12" id="seller_login">
-                <form action="">
-                    <div class="input-field">
-                        <i class="fa fa-user prefix"></i>
-                        <input type="text" id="email" name="name">
-                        <label for="email">Username/Email/Phone no.</label>
-                    </div>
-                    <div class="input-field">
-                        <i class="fa fa-key prefix"></i>
-                        <input type="password" id="password" name="password"></input>
-                        <label for="password">Password</label>
-                    </div>
-                    <div class="input-field center">
-                        <button class="btn">Submit</button>
-                    </div>
-                </form>
-            </div>
-
-            <!-- part 2-3 -->
-
-            <div class="col s12" id="seller_signup">
-            <form action="">
-                    <div class="input-field">
-                        <i class="fa fa-user prefix"></i>
-                        <input type="text" id="email" name="name">
-                        <label for="email">Username/Company Name</label>
-                    </div>
-                    <div class="input-field">
-                        <i class="fa fa-phone prefix"></i>
-                        <input type="text" id="email" name="name">
-                        <label for="email">Phone No.</label>
-                    </div>
-                    <div class="input-field">
-                        <i class="material-icons prefix">email</i>
-                        <input type="email" id="email" name="name">
-                        <label for="email">Email</label>
-                    </div>
-                    <div class="input-field">
-                        <i class="material-icons prefix">location_on</i>
-                        <input type="text" id="email" name="name">
-                        <label for="email">Address</label>
-                    </div>
-                    <div class="input-field">
-                        <i class="fa fa-key prefix"></i>
-                        <input type="password" id="password" name="password"></input>
-                        <label for="password">Password</label>
-                    </div>
-                    <div class="input-field">
-                        <i class="fa fa-reload prefix"></i>
-                        <input type="password" id="password" name="password"></input>
-                        <label for="password">Confirm Password</label>
-                    </div>
-                    <div class="input-field center">
-                        <button class="btn">Submit</button>
-                    </div>
-                </form>
+            <div class="col s12 l12 center-align section">
+                <h6 class="white-text">Don't have an account? <a href="vendorsignup">Create an account.</a></h6>
             </div>
         </div>
-    </div>
     </div>
 
     <!-- jquery -->
@@ -135,13 +57,6 @@
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-    <!-- custom javascript -->
-    <script>
-        $(document).ready(function(){
-            $('.tabs').tabs();
-        });
-    </script>
 
 </body>
 </html>
