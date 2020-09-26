@@ -16,6 +16,6 @@
     <title>404 not found</title>
 </head>
 <body>
-    <h1>not found</h1>
+    <h1><?php echo $invalidroute; ?> not found</h1>
 </body>
 </html>
