@@ -16,5 +16,18 @@
             $products = $st->fetchall();
             return $products;
         }
+
+        public static function storeCart($username,$productId)
+        {
+            $st_uid = self::$pdo->prepare("select user_id from users where username = :username");
+            $st_uid->bindParam(':username',$username);
+            $st_uid->execute();
+            $userId = $st_uid->fetch();
+             $st = self::$pdo->prepare("insert into carts values(:pid,:uid)");
+             $st->bindParam(':pid',$productId);
+            $st->bindParam(':uid',$userId['user_id']);
+             $st->execute();
+        }
+     
     }   
 ?>

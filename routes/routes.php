@@ -33,6 +33,10 @@
         ProductController::searchItem($_POST);
     });
 
+    Route::post('list_products',function(){
+        ProductController::addCart($_GET);
+    });
+
     /* user login and signup */
     
     Route::get('userlogin',function(){

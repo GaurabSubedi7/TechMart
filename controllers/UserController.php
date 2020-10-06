@@ -33,6 +33,7 @@
                 {
                    // $_SESSION['logged_user'] = $checkinguser_status['username'];
                    $_SESSION['logged_user'] =  $checkUser_Status['username'];
+                   $_SESSION['shopping_cart'] = array();
                     header("Location: http://localhost/TechMart/", TRUE, 301);
                     exit();
                 }
