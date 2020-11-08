@@ -7,6 +7,7 @@
             $data = ['products'=>$products];
             self::createView($route, $data);
         }
+
         public static function searchItem($search_query)
         {
             if (isset($search_query['query'])) {
@@ -29,6 +30,20 @@
             }
             
         }
+
+        public static function listCartItem($route)
+        {
+            if(!empty($_SESSION['logged_user']))
+            {
+                $cartItem = ProductModel::GetCartItem();
+                $data = ['cartItem'=>$cartItem];
+                self::createView($route, $data);
+            }   
+            else{
+                //redirect to login page for being hero madafaka
+            } 
+        }
+
         public static function showProduct($route)
         {
             self::createView($route);

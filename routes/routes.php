@@ -16,10 +16,13 @@
     Route::set('list_vendors');
     Route::set('notfound');
     Route::set('product');
+    Route::set('cart');
 
     Route::get('index.php', function(){
         IndexController::createView('home');
     });
+
+    /*Products */
 
     Route::get('list_products',function(){
         ProductController::showItem('list_products');
@@ -35,6 +38,12 @@
 
     Route::post('list_products',function(){
         ProductController::addCart($_GET);
+    });
+
+    /*cart */
+
+    Route::get('cart',function(){
+        ProductController::listCartItem('cart');
     });
 
     /* user login and signup */
