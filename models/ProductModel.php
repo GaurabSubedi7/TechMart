@@ -12,7 +12,7 @@
                 $st_uid->execute();
                 $userId = $st_uid->fetch();
                 $_SESSION['user_id']=$userId['user_id'];
-                $st = self::$pdo->prepare("select * from carts inner join products on carts.product_id = products.product_id and carts.user_id != :user_id");
+                $st = self::$pdo->prepare(" select * from products where product_id != ALL(select product_id from carts where user_id =  :user_id)");
                 $st->bindParam(':user_id',$_SESSION['user_id']);
                 $st->execute();
                 $products = $st->fetchall();

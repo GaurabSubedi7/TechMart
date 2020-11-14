@@ -16,7 +16,8 @@
     Route::set('list_vendors');
     Route::set('notfound');
     Route::set('product');
-    Route::set('cart');
+    Route::set('vendor/upload');
+    Route::set('list_products/cart');
 
     Route::get('index.php', function(){
         IndexController::createView('home');
@@ -42,7 +43,7 @@
 
     /*cart */
 
-    Route::get('cart',function(){
+    Route::get('list_products/cart',function(){
         ProductController::listCartItem('cart');
     });
 
@@ -94,6 +95,14 @@
 
     Route::get('logout',function(){
         VendorController::logoutVendor('logout');
+    });
+
+    Route::get('vendor/upload',function(){
+        VendorController::ShowUpload('upload');
+    });
+
+    Route::post('vendor/upload',function(){
+        VendorController::ProductPost($_POST);
     });
 
     /* ------------------------------------- */

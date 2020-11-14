@@ -5,7 +5,7 @@
             <i class="material-icons">menu</i>
         </a>
         <ul class="right hide-on-med-and-down" id="homenavlist">
-        <li><a href="product" class="homenavlist waves-effect waves-light">Products</a></li>
+        <li><a href="list_products" class="homenavlist waves-effect waves-light">Products</a></li>
         <?php
         $_SESSION['logged_member'] = NULL;
         if(!empty($_SESSION['logged_user'])){
@@ -26,9 +26,10 @@
                 echo $_SESSION['logged_user'];
             }
             
-            if(!empty($_SESSION["logged_vendor"])){
-                echo $_SESSION['logged_vendor'];
-            }
+              
+            if(!empty($_SESSION["logged_vendor"])){?>
+                <li><a href="vendor/upload" class="homenavlist waves-effect waves-light active"> <?php echo $_SESSION['logged_vendor'];?></a></li>
+           <?php  }
          ?>
         <li><a href="logout" class="homenavlist waves-effect waves-light active">logout</a></li>
             

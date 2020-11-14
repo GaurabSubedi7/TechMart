@@ -51,5 +51,15 @@
            return 1;
         }
 
+        public static function GetId()
+        {
+            $st = self::$pdo->prepare("select vendor_id from vendors where vendor_name=:vendor_name");
+            $st->bindParam(":vendor_name",$_SESSION["logged_vendor"]);
+            $st->execute();
+            $vendor_id = $st->fetch();
+            return $vendor_id;
+           // var_dump($vendor_id);
+        }
+
     }   
 ?>

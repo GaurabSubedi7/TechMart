@@ -22,6 +22,12 @@
             self::createView($route, $data);
         }
       
+        public static function ShowUpload($route)
+        {
+            $vendor_id = VendorModel::GetId();
+            $data = ['vendor_id'=>$vendor_id];
+            self::createView($route ,$data);
+        }
 
         public static function postLogin($post,$btnName)
         {
@@ -32,7 +38,8 @@
                 {
                    // $_SESSION['logged_user'] = $checkinguser_status['username'];
                    $_SESSION['logged_vendor'] =  $checkVendor_Status['vendor_name'];
-                    header("Location: http://localhost/TechMart/", TRUE, 301);
+                 //  $_SESSION['logged_user'] = $_SESSION['logged_vendor'];
+                    header("Location: http://localhost/project5/TechMart/", TRUE, 301);
                     exit();
                 }
                 else{
@@ -52,7 +59,8 @@
                     $stat = 0;
                     $stat = VendorModel::addVendor($post);
                     $_SESSION['logged_vendor'] = $post['vendor_name'];
-                    header("Location: http://localhost/TechMart/", TRUE, 301);
+                  //  $_SESSION['logged_user'] = $_SESSION['logged_vendor'];
+                    header("Location: http://localhost/project5/TechMart/", TRUE, 301);
                     ob_enf_flush();
                 }
                 else if(empty($post['vendor_name'])){
@@ -64,5 +72,11 @@
                 }
             }
         }
+        public static function ProductPost($data)
+        {
+            
+
+            
+}
     }
 ?>

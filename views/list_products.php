@@ -1,6 +1,6 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>  
 <input type="text" name="search" id="search" autocomplete="off" placeholder="search product name here....">
-<a href="cart">cart</a>
+<a href="list_products/cart">cart</a>
 <div id="output"></div>
 <table style="width:100%">
 <tr>
