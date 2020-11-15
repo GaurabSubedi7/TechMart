@@ -21,24 +21,28 @@
             </div>
 
                 <!-- for loading all the stuff from cart to content div -->
-                
+                <?php
+          if(!empty($_SESSION['logged_user']))
+          {?>
                 <div class="col s2 right">
                 <ul class="collapsible popout right">
                 <li>
                 <div class="collapsible-header btn-floating right" onclick="load_home()"><i class="material-icons">shopping_cart</i>Cart</div>
-                <div  id ="content" class="collapsible-body right"></div></li>
+                <div  id ="content" class="collapsible-body right"></div>
+                </li>
                 </ul>
                 </div>
-             
+          <?php } ?>
                 <!-- to here -->
         </div>
 
   </nav>
-
+wait for a sec to remove from cart it works noicely though
 
 
 <div class="container">
 <?php
+
  foreach($products as $product){ ?> 
     <form method="post" action="?action=add&id=<?php echo $product['product_id']; ?>">
      
@@ -47,9 +51,19 @@
       <div class="card">
         <div class="card-image">
             
-        <img alt="./views/public/img/<?php echo $product['product_image']; ?>" src="./views/public/img/RTX3090.jpg" srcset="">
+        <img alt="./views/public/img/<?php echo $product['product_image']; ?>" src="./views/public/img/drone_sunset.jpg" srcset="">
           <span class="card-title"><?php echo $product['product_name']; ?></span>
+          <?php
+          if(empty($_SESSION['logged_user']))
+          {
+            ?>
+             <a href="http://localhost/project5/TechMart/userlogin" class="btn-floating halfway-fab waves-effect waves-light red">0</a>
+            <?php
+          }else{
+          
+          ?>
           <button class="btn-floating halfway-fab waves-effect waves-light red" onclick="M.toast({html: 'Added to your cart'})"><i class="material-icons">add</i></button>
+     <?php }?>
         </div>
         <div class="card-content">
           <p> <h3><?php echo $product['product_price']; ?></h3> </p>
@@ -71,12 +85,6 @@ function load_home() {
      document.getElementById("content").innerHTML='<object type="text/html" data="http://localhost/project5/TechMart/list_products/cart" ></object>';
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.collapsible');
-    var instances = M.Collapsible.init(elems, options);
-  });
-
-  // Or with jQuery
 
   $(document).ready(function(){
     $('.collapsible').collapsible();

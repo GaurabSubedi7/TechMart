@@ -47,6 +47,10 @@
         ProductController::listCartItem('cart');
     });
 
+    Route::get('list_products/cart',function(){
+        ProductController::RemoveCartItem($_GET,'cart');
+    });
+
     /* user login and signup */
     
     Route::get('userlogin',function(){

@@ -47,6 +47,7 @@
              $st->bindParam(':pid',$productId);
             $st->bindParam(':uid',$userId['user_id']);
              $st->execute();
+             header("Location: http://localhost/project5/TechMart/list_products", TRUE, 301);
         }
 
         public static function GetCartItem()
@@ -57,6 +58,16 @@
             $cartStatement->execute();
             $items = $cartStatement->fetchall();
             return $items;
+        }
+
+        public static function removeItem($id)
+        {
+            $removeStatement = self::$pdo->prepare("delete from carts where product_id = :pid AND user_id = :userId");
+            $removeStatement->bindParam(':userId',$_SESSION['user_id']);
+            $removeStatement->bindParam(':pid',$id);
+            $removeStatement->execute();
+           
+       
         }
      
     }   

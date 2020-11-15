@@ -48,5 +48,15 @@
         {
             self::createView($route);
         }
+
+        public static function RemoveCartItem($data)
+        {
+           
+           if($data['action']='remove' && !empty($data['id']) && !empty($_SESSION['logged_user']))
+           {
+               ProductModel::removeItem($data['id']);
+               header("Refresh:1");
+           }
+        }
     }
 ?>
