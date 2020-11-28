@@ -8,15 +8,7 @@
     <link rel="stylesheet" type="text/css" href="./views/public/css/style.css">
     <link rel="stylesheet" type="text/css" href="./views/public/css/userlogin_style.css">
 
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-    <!-- font awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+    <?php include 'partials/Elinks.php'; ?>
     <title>userlogin</title>
 </head>
 <body class="loginpage">
@@ -57,6 +49,9 @@
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+document.getElementById('error').style.display = 'none';
 
+</script>
 </body>
 </html>

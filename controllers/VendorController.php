@@ -75,8 +75,8 @@
         public static function ProductPost($data)
         {
             
-
-            
-}
+       //  var_dump($data);
+                    
+        }
     }
 ?>

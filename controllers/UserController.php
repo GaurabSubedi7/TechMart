@@ -34,11 +34,11 @@
                    // $_SESSION['logged_user'] = $checkinguser_status['username'];
                    $_SESSION['logged_user'] =  $checkUser_Status['username'];
                    $_SESSION['shopping_cart'] = array();
-                    header("Location: http://localhost/TechMart/", TRUE, 301);
+                    header("Location: http://localhost/project5/TechMart/", TRUE, 301);
                     exit();
                 }
                 else{
-                    echo "Invalid credential";
+                    echo "<div class='container' id='error'><div class='card-panel  red darken-4 center-align'>Invalid credential</div></div>";
                 }
         }
 
@@ -54,15 +54,16 @@
                     $stat = 0;
                     $stat = UserModel::addUser($post);
                     $_SESSION['logged_user'] = $post['username'];
-                    header("Location: http://localhost/TechMart/", TRUE, 301);
+                    header("Location: http://localhost/project5/TechMart/", TRUE, 301);
                     ob_enf_flush();
                 }
                 else if(empty($post['username'])){
-                    echo "cannot have empty username";
+                    echo "<div class='container' id='error'><div class='card-panel  red darken-4 center-align'>Enter a username</div></div>";
                 }
                 else
                 {
-                    echo "Username exists";
+                    echo "<div class='container' id='error'><div class='card-panel  red darken-4 center-align'>Username exists</div></div>";
+              
                 }
             }
         }
