@@ -23,7 +23,7 @@
     <div class="container">
         <div class="row">
             <div class="col s12 l3">
-                <a href="/TechMart"><img src="./views/public/img/logo-techmart.png" alt="logo" class="responsive-img"></a>
+                <a href="/project5/TechMart"><img src="./views/public/img/logo-techmart.png" alt="logo" class="responsive-img"></a>
             </div>
             <div class="col s12 l12">
                 <h3 class="white-text center-align"><b>Sign Up</b></h3>

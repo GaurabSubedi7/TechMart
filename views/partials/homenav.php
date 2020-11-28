@@ -1,6 +1,6 @@
 <nav class="navwrapper homenav grey transparent">
     <div class="container">
-        <a href="/TechMart" class="brand-logo"><img src="./views/public/img/logo-techmart.png" alt="logo" class="responsive-img logo"></a>
+        <a href="/project5/TechMart" class="brand-logo"><img src="./views/public/img/logo-techmart.png" alt="logo" class="responsive-img logo"></a>
         <a href="" class="sidenav-trigger" data-target="mobile-menu">
             <i class="material-icons">menu</i>
         </a>
