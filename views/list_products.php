@@ -1,46 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Market</title>
-    <?php include 'partials/Elinks.php'; ?>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Market</title>
+        <link rel="stylesheet" type="text/css" href="./views/public/css/style.css">
+        <?php include 'partials/Elinks.php'; ?>
+        <style>
+            .badge{
+            position: relative;
+            top: 20px;
+            right: 27px;
+            border-radius: 20px;
+            }   
 
-<nav>
-        <div class="row">
-            <div class="nav-wrapper col s10">
-            <form>
-                <div class="input-field">
-                <input id="search" type="search" name="search" >
-                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                <i class="material-icons">close</i>
-                </div>
-            </form>
-            </div>
+            .search-icon{
+                width: 200px;
+            }
 
-                <!-- for loading all the stuff from cart to content div -->
-                <?php
-          if(!empty($_SESSION['logged_user']))
-          {?>
-                <div class="col s2 right">
-                <ul class="collapsible popout right">
-                <li>
-                <div class="collapsible-header btn-floating right" onclick="load_home()"><i class="material-icons">shopping_cart</i>Cart</div>
-                <div  id ="content" class="collapsible-body right"></div>
-                </li>
+            .cart{
+                top: 63px !important;
+                width: 300px !important;
+                height: auto !important;
+            }
+        </style>
+    </head>
+    <body>
+    <!-- navbar for the market -->
+        <nav class="nav-wrapper grey darken-4">
+            <!-- logo -->
+            <a href="/project5/TechMart" class="brand-logo hide-on-med-and-down"><img src="./views/public/img/logo-techmart.png" alt="logo" class="responsive-img logo"></a>
+            <div class="container">         
+                <ul class="right">
+                    <!-- logo for mobile -->
+                    <li>
+                        <a href="/project5/TechMart" class="brand-logo left hide-on-large-only"><img src="./views/public/img/logo-techmart.png" alt="logo" class="responsive-img" style="height:50px;width:150px;"></a>
+                    </li>
+                    <!-- searchbar -->
+                    <li class="search-icon" id="search-icon">
+                        <nav class="z-depth-0 grey transparent">
+                            <div class="nav-wrapper">
+                                <form action="" method="get">
+                                    <div class="input-field " id="searchbar">
+                                        <input class="white-text transparent" id="search" name="searchKeyword" autocomplete="off" type="search" placeholder="Search" required>
+                                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                                    </div>
+                                </form>
+                            </div>
+                        </nav>
+                    </li>
+                    <?php
+                        if(!empty($_SESSION['logged_user']))
+                        {?>
+                            <li>
+                                <a href="" class="z-depth-0 transparent dropdown-trigger wave-effect waves-light btn" data-target="cart" onclick="load_home()"><i class="material-icons">shopping_cart</i></a>
+                            </li>
+                    <?php } ?>
                 </ul>
-                </div>
-          <?php } ?>
-                <!-- to here -->
-        </div>
+            </div>
+        </nav>
 
-  </nav>
-wait for a sec to remove from cart it works noicely though
+        <ul class="dropdown-content cart" id="cart">
+            <li id="content"></li>
+        </ul>
 
 
-<div class="container">
+        <!-- ------------- -->
+
+        <div class="container">
 <?php
 
  foreach($products as $product){ ?> 
@@ -57,7 +84,7 @@ wait for a sec to remove from cart it works noicely though
           if(empty($_SESSION['logged_user']))
           {
             ?>
-             <a href="http://localhost/project5/TechMart/userlogin" class="btn-floating halfway-fab waves-effect waves-light red">0</a>
+             <a href="http://localhost/project5/TechMart/userlogin" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
             <?php
           }else{
           
@@ -78,19 +105,19 @@ wait for a sec to remove from cart it works noicely though
 </div>
 <div id="topBar">  </div>
 
-
-<script>
-
-function load_home() {
-     document.getElementById("content").innerHTML='<object type="text/html" data="http://localhost/project5/TechMart/list_products/cart" ></object>';
-}
+        <!-- ------------------ -->
 
 
-  $(document).ready(function(){
-    $('.collapsible').collapsible();
-  });
-</script>
-</body>
+
+        <script>
+            function load_home() {
+                document.getElementById("content").innerHTML='<object type="text/html" data="http://localhost/project5/TechMart/list_products/cart"></object>';
+            }
+
+            $(document).ready(function(){
+                $('.collapsible').collapsible();
+                $('.dropdown-trigger').dropdown();
+            });
+        </script>
+    </body>
 </html>
-            
-

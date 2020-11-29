@@ -34,7 +34,7 @@
             <h1><i class="material-icons large prefix red-text left text-darken-4">report_problem</i> Oops!!!</h1>
             <h4>404 Page Not Found</h4>
             <h5>You weren't suppose to be here.</h5>
-            <a href="/TechMart" class="btn-large red darken-4">Go Back Home</a>
+            <a href="/project5/TechMart" class="btn-large red darken-4">Go Back Home</a>
         </div>
     </div>
 </body>
