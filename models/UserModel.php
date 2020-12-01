@@ -52,5 +52,29 @@
            return 1;
         }
 
+        public static function GetUserData()
+        {
+            $st = self::$pdo->prepare("select first_name,last_name,email,phone_number,address from users where username =:username");
+            $st->bindParam(":username",$_SESSION['logged_user']);
+            //var_dump($_SESSION['logged_user']);
+            $st->execute();
+            $detail = $st->fetch();
+            return $detail;
+        }
+
+        public static function UpdateUser($data)
+        {
+            $st = self::$pdo->prepare("update users set first_name = :first_name,last_name =:last_name,email =:email,phone_number =:number,address =:address where username =:username");
+            $st->bindParam(":first_name",$data['first_name']);
+            $st->bindParam(":last_name",$data['last_name']);
+            $st->bindParam(":username",$_SESSION['logged_user']);
+            $st->bindParam(":email",$data['email']);
+            $st->bindParam(":number",$data['phone_number']);
+            $st->bindParam(":address",$data['address']);
+            $st->execute();
+            header("Location: http://localhost/project5/TechMart/userProfile", TRUE, 301);
+            exit();
+        }
+
     }   
 ?>

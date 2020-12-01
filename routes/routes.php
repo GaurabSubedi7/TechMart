@@ -18,7 +18,8 @@
     Route::set('product');
     Route::set('vendor/upload');
     Route::set('list_products/cart');
-
+    Route::set('userProfile');
+    
     Route::get('index.php', function(){
         IndexController::createView('home');
     });
@@ -75,6 +76,13 @@
         UserController::postSignup($_POST,"usersignup");
     });
 
+    Route::get('userProfile',function(){
+        UserController::showUserProfile('userProfile');
+    });
+
+    Route::post('userProfile',function(){
+        UserController::UpdateProfile($_POST,"update");
+    });
     Route::get('logout',function(){
         UserController::logoutUser('logout');
     });
