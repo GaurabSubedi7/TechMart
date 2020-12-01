@@ -89,13 +89,13 @@
                 <div class="col m3 l3 center"><h6><b>Price</b></h6></div>
                 <div class="col m3 l2 center"><h6><b>Quantity</b></h6></div>
                 <div class="col m3 l2 center"><h6><b>Total</b></h6></div>
-            </div>
+            </div><form method="post" id="thisform">
             <?php
             $total = 0;
             foreach($cartItem as $item)
             {
                ?>
-               <form method="post" id="thisform">
+               <!-- <form method="post" id="thisform"> -->
                     <div class="row section">
                         <!-- product name -->
                         <div class="col s12 m6 l2">
@@ -120,11 +120,11 @@
                         <!-- ========= -->
                         <!-- total for each item -->                   
                     </div>
-                </form>
+                <!-- </form> -->
                <div class="divider black"></div>
             <?php }
                 }
-    ?>
+    ?></form>
         <div style="margin-left:20px;">
             <p class="flow-text">Subtotal : Rs. <?php echo $total; ?></p>
             <a href="/project5/TechMart/list_products" class="btn waves-effect grey darken-3"><b>Continue Shopping</b></a>
