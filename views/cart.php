@@ -88,7 +88,7 @@
                 <div class="col m3 l4 center"><h6><b>Product</b></h6></div>
                 <div class="col m3 l3 center"><h6><b>Price</b></h6></div>
                 <div class="col m3 l2 center"><h6><b>Quantity</b></h6></div>
-                <div class="col m3 l2 center"><h6><b>Total</b></h6></div>
+                <div class="col m3 l2 right"><h6><b>Total</b></h6></div>
             </div><form method="post" id="thisform">
             <?php
             $total = 0;
@@ -108,16 +108,19 @@
                         <!-- ======== -->
                         <!-- price -->
                         <div class="col s12 m6 l2">
-                            <h6 class="orange-text" style="margin-top:30px;"><b>Rs. <?php echo intval($item['product_price']); $total = $item['product_price']+$total;?></b></h6>
+                            <h6 class="orange-text" style="margin-top:30px;"><b>NRs. <?php echo intval($item['product_price']); $eachtotal = $item['product_price'];?></b></h6>
                         </div>
                         <!-- ======= -->
                         <!-- quantity -->
                         <div class="col s12 m6 l2">
-                            <input type="number" value="<?php echo $item['item_quantity'];?>" id="quantity" name="quantity" class="center">
+                            <input type="number" value="<?php echo $item['item_quantity']; $eachtotal = $item['item_quantity']*$eachtotal;?>" id="quantity" name="quantity" class="center">
                             <input class="btn orange lighten-1" type="submit" name="updatebtn" value="Update" style="margin-top:5px;" onclick="submitForm('update',<?php echo $item['product_id']; ?>)">
                         </div>
                         <!-- ========= -->
                         <!-- total for each item -->                   
+                        <div class="col s12 m6 l2 right">
+                            <h6 class="orange-text" style="margin-top:30px;"><b>NRs. <?php echo intval($eachtotal); $total = $eachtotal+$total;?></b></h6>
+                        </div>
                     </div>
                <div class="divider black"></div>
             <?php }

@@ -22,7 +22,7 @@
                 <?php
             }else{
                 if(!empty($_SESSION["logged_user"])){?>
-                    <li><a href="#" class="homenavlist waves-effect waves-light active"> <?php echo $_SESSION['logged_user'];?></a></li>
+                    <li><a href="userProfile" class="homenavlist waves-effect waves-light active"> <?php echo $_SESSION['logged_user'];?></a></li>
                     <?php
                     
                 }
