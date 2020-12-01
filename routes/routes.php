@@ -15,7 +15,6 @@
     Route::set('list_users');
     Route::set('list_vendors');
     Route::set('notfound');
-    Route::set('product');
     Route::set('vendor/upload');
     Route::set('list_products/cart');
     Route::set('userProfile');
@@ -27,19 +26,15 @@
     /*Products */
 
     Route::get('list_products',function(){
-        ProductController::showItem('list_products');
-    });
-
-    Route::get('product',function(){
-        ProductController::showProduct('product');
-    });
-
-    Route::post('list_products',function(){
-        ProductController::searchItem($_POST);
+        ProductController::showItem($_GET,'list_products');
     });
 
     Route::post('list_products',function(){
         ProductController::addCart($_GET);
+    });
+
+    Route::get('list_products',function(){
+        ProductController::searchItems($_GET,'list_products');
     });
 
     /*cart */

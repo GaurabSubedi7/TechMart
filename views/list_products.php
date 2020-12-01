@@ -7,13 +7,6 @@
         <link rel="stylesheet" type="text/css" href="./views/public/css/style.css">
         <?php include 'partials/Elinks.php'; ?>
         <style>
-            .badge{
-            position: relative;
-            top: 20px;
-            right: 27px;
-            border-radius: 20px;
-            }   
-
             .search-icon{
                 width: 200px;
             }
@@ -36,7 +29,7 @@
                             <div class="nav-wrapper">
                                 <form action="" method="get">
                                     <div class="input-field " id="searchbar">
-                                        <input class="white-text transparent" id="search" name="searchKeyword" autocomplete="off" type="search" placeholder="Search" required>
+                                        <input class="white-text transparent" id="search" name="searchKeyword" autocomplete="off" type="search" placeholder="Search" value="">
                                         <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                                     </div>
                                 </form>
@@ -45,10 +38,16 @@
                     </li>
                     <?php
                         if(!empty($_SESSION['logged_user']))
-                        {?>
+                        {
+                          $cartCount = 0;
+                            foreach($cartItem as $item)
+                            {
+                                $cartCount += 1; }
+                          ?>
                             <li>
                                 <a href="list_products/cart" class="z-depth-0 transparent wave-effect waves-light btn"><i class="material-icons">shopping_cart</i></a>
                             </li>
+                              <li><input type="button" class="circle orange-text text-lighten-1 new grey darken-3" value="<?php echo $cartCount; ?>" style="border:none;margin-left:-35px;"></li>
                     <?php }else{ ?>
                             <li class="hide-on-small-only">
                               <a href="http://localhost/project5/TechMart/userlogin" class="btn orange" type="submit">Login</a>
@@ -61,6 +60,51 @@
             </div>
         </nav>
 
+
+        <?php 
+          if(isset($_GET['searchKeyword'])){
+            if(!empty($filteredProducts)){ ?>
+              <div class="container">
+          <div class="row">
+            <?php
+              foreach($filteredProducts as $filteredproduct){ ?> 
+                <form method="post" action="?action=add&id=<?php echo $filteredproduct['product_id']; ?>">
+                  <div class="col s12 m6 l4">
+                    <div class="card medium sticky-action">
+                      <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="./views/public/img/<?php echo $filteredproduct['product_image'];?>" style="height:230px;width:300px;">
+                      </div>
+                      <div class="card-content">
+                        <span class="activator grey-text text-darken-4"><i class="material-icons right">more_vert</i><h6><?php echo $filteredproduct['product_name']; ?></h6></span>
+                        <p><a class="orange-text" href=""><b>Rs. <?php echo intval($filteredproduct['product_price']); ?></b></a></p> <br>
+                      </div>
+                          <div class="card-action">
+                            <?php
+                              if(empty($_SESSION['logged_user'])){
+                            ?>
+                              <a href="http://localhost/project5/TechMart/userlogin" class="btn" type="submit">Add To Cart</a>
+                            <?php
+                              }else{
+                            ?>
+                              <button class="btn" onclick="M.toast({html: 'Added to your cart'})">Add To Cart</button>
+                            <?php }?>
+                          </div>
+                      <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i><?php echo $filteredproduct['product_name']; ?></span>
+                        <p><?php echo $filteredproduct['product_description']; ?> </p>
+                      </div>
+                    </div>
+                  </div>            
+                </form>
+            <?php } ?>
+          </div>
+        </div>
+           <?php }else{
+              echo '<h4 class="center section">No result found</h4>';
+            }
+            ?>
+        <?php }else{
+        ?>
         <div class="container">
           <div class="row">
             <?php
@@ -96,8 +140,7 @@
             <?php } ?>
           </div>
         </div>
-        <div id="topBar">  </div>
-
+        <?php } ?>                       
         <!-- ------------------ -->
 
 

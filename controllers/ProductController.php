@@ -1,21 +1,16 @@
 <?php 
     class ProductController extends BaseController
     {
-        public static function showItem($route)
+        public static function showItem($data,$route)
         {
-            $products = ProductModel::listProducts();
-            $data = ['products'=>$products];
-            self::createView($route, $data);
-        }
-
-        public static function searchItem($search_query)
-        {
-            if (isset($search_query['query'])) {
-                $result = ProductModel::getProduct($search_query['query']);
-               // var_dump($result);
-                $data = ['products'=>$result];
-                self::createView('list_products', $data);
-             
+            if(!isset($data['searchKeyword'])){
+                // for cart count
+                $cartItem = ProductModel::GetCartItem();
+                $cartdata = ['cartItem'=>$cartItem];
+                //==============
+                $products = ProductModel::listProducts();
+                $data = ['products'=>$products];
+                self::createView($route, $data, $cartdata);
             }
         }
 
@@ -63,12 +58,24 @@
         public static function updateCartItem($data, $btnname)
         {
           if(isset($data['action']) && isset($_POST[$btnname])){
-            if($data['action']=='update' && !empty($data['id']) && !empty($_SESSION['logged_user']))
-           {
-                ProductModel::updateItem($data['id'],$_POST['quantity']);
-                header("Location: http://localhost/project5/TechMart/list_products/cart", TRUE, 301);
-           }
+                if($data['action']=='update' && !empty($data['id']) && !empty($_SESSION['logged_user']))
+                {
+                    ProductModel::updateItem($data['id'],$_POST['quantity']);
+                    header("Location: http://localhost/project5/TechMart/list_products/cart", TRUE, 301);
+                }
+            }
         }
+
+        public static function searchItems($get,$route){
+            if(isset($get['searchKeyword'])){
+                // for cart count
+                $cartItem = ProductModel::GetCartItem();
+                $cartdata = ['cartItem'=>$cartItem];
+                //==============
+                $products = ProductModel::searchProducts($get['searchKeyword']);
+                $data = ['filteredProducts'=>$products];
+                self::createView($route, $data, $cartdata);
+            }
         }
     }
 ?>

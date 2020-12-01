@@ -42,7 +42,7 @@
                     <li class="search-icon" id="search-icon">
                         <nav class="z-depth-0 grey transparent">
                             <div class="nav-wrapper">
-                                <form action="" method="get">
+                                <form action="/project5/TechMart/list_products" method="get">
                                     <div class="input-field " id="searchbar">
                                         <input class="white-text transparent" id="search" name="searchKeyword" autocomplete="off" type="search" placeholder="Search" required>
                                         <label class="label-icon" for="search"><i class="material-icons">search</i></label>
@@ -53,10 +53,16 @@
                     </li>
                     <?php
                         if(!empty($_SESSION['logged_user']))
-                        {?>
+                        {
+                            $cartCount = 0;
+                            foreach($cartItem as $item)
+                            {
+                                $cartCount += 1; }
+                            ?>
                             <li>
                                 <a href="/project5/TechMart/list_products/cart" class="z-depth-0 transparent wave-effect waves-light btn hide-on-small-only"><i class="material-icons">shopping_cart</i></a>
                             </li>
+                            <li><input type="button" class="circle orange-text text-lighten-1 new grey darken-3" value="<?php echo $cartCount; ?>" style="border:none;margin-left:-35px;"></li>
                     <?php }else{ ?>
                             <li class="hide-on-small-only">
                               <a href="http://localhost/project5/TechMart/userlogin" class="btn orange" type="submit">Login</a>
@@ -70,6 +76,7 @@
         </nav>
 
     <?php
+        $total = 0;
         if(empty($cartItem)){   
             ?>
             <div class="container center">
@@ -77,7 +84,7 @@
                 <p class="grey-text flow-text text-darken-2">Your cart is currently empty.</p>
                 <a href="/project5/TechMart/list_products" class="btn waves-effect"><b>Continue Shopping</b><i class="material-icons right">arrow_right_alt</i></a>
             </div>
-            <div class="footer-copyright" style="margin-top:290px;">
+            <div class="footer-copyright" style="margin-top:285px;margin-bottom:10px;">
                 <div class="container center-align">&copy; 2020 TechMart</div>
             </div>
             <?php
@@ -91,7 +98,6 @@
                 <div class="col m3 l2 right"><h6><b>Total</b></h6></div>
             </div><form method="post" id="thisform">
             <?php
-            $total = 0;
             foreach($cartItem as $item)
             {
                ?>
@@ -123,18 +129,18 @@
                         </div>
                     </div>
                <div class="divider black"></div>
-            <?php }
-                }
-    ?></form>
-        <div style="margin-left:20px;">
-            <p class="flow-text">Subtotal : Rs. <?php echo $total; ?></p>
-            <a href="/project5/TechMart/list_products" class="btn waves-effect grey darken-3"><b>Continue Shopping</b></a>
-            <a href="/project5/TechMart/list_products" class="btn waves-effect"><b>Checkout</b></a>
-        </div>
-        <div class="footer-copyright" style="margin-top:110px;margin-bottom:10px;">
-            <div class="container center-align">&copy; 2020 TechMart</div>
-        </div>
-    </body>
+            <?php } ?>
+                <div style="margin-left:20px;">
+                <p class="flow-text">Subtotal : Rs. <?php echo $total; ?></p>
+                <a href="/project5/TechMart/list_products" class="btn waves-effect grey darken-3"><b>Continue Shopping</b></a>
+                <a href="#" class="btn waves-effect"><b>Checkout</b></a>
+            </div>
+            <div class="footer-copyright" style="margin-top:110px;margin-bottom:10px;">
+                <div class="container center-align">&copy; 2020 TechMart</div>
+            </div>
+            </body>
+            <?php } ?>
+        </form>
     <script>
         function submitForm(action, id){
             var form = document.getElementById('thisform');

@@ -54,7 +54,7 @@
 
         public static function GetUserData()
         {
-            $st = self::$pdo->prepare("select first_name,last_name,email,phone_number,address from users where username =:username");
+            $st = self::$pdo->prepare("select first_name,last_name,username,email,phone_number,address from users where username =:username");
             $st->bindParam(":username",$_SESSION['logged_user']);
             //var_dump($_SESSION['logged_user']);
             $st->execute();
