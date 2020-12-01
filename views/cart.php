@@ -84,7 +84,7 @@
                 <p class="grey-text flow-text text-darken-2">Your cart is currently empty.</p>
                 <a href="/project5/TechMart/list_products" class="btn waves-effect"><b>Continue Shopping</b><i class="material-icons right">arrow_right_alt</i></a>
             </div>
-            <div class="footer-copyright" style="margin-top:285px;margin-bottom:10px;">
+            <div class="footer-copyright" style="margin-top:281px;margin-bottom:5px;">
                 <div class="container center-align">&copy; 2020 TechMart</div>
             </div>
             <?php

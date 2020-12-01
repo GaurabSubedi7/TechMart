@@ -101,6 +101,9 @@
         </div>
            <?php }else{
               echo '<h4 class="center section">No result found</h4>';
+              echo '<div class="footer-copyright" style="margin-top:510px;margin-bottom:5px;">
+              <div class="container center-align">&copy; 2020 TechMart</div>
+          </div>';
             }
             ?>
         <?php }else{
@@ -140,11 +143,11 @@
             <?php } ?>
           </div>
         </div>
+        <div class="footer-copyright" style="margin-top:175px;margin-bottom:5px;">
+            <div class="container center-align">&copy; 2020 TechMart</div>
+        </div>
         <?php } ?>                       
         <!-- ------------------ -->
-
-
-
         <script>
             // function load_home() {
             //     document.getElementById("content").innerHTML='<object type="text/html" data="http://localhost/project5/TechMart/list_products/cart"></object>';

@@ -78,5 +78,8 @@
                 </div>
             </div>
         </form>
+        <div class="footer-copyright" style="margin-top:50px;margin-bottom:5px;">
+            <div class="container center-align">&copy; 2020 TechMart</div>
+        </div>
 </body>
 </html>
