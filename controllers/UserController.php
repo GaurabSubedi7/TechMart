@@ -67,5 +67,20 @@
                 }
             }
         }
+        public static function showUserProfile($route)
+        {
+                    $user = UserModel::GetUserData();
+                    $data = ['user'=>$user];
+
+                    self::createView($route, $data);
+        }
+
+        public static function updateProfile($post,$btnName)
+        {
+            if(isset($_POST[$btnName]))
+            {
+                UserModel::UpdateUser($post);
+            }
+        }
     }
 ?>
