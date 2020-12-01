@@ -95,7 +95,6 @@
             foreach($cartItem as $item)
             {
                ?>
-               <!-- <form method="post" id="thisform"> -->
                     <div class="row section">
                         <!-- product name -->
                         <div class="col s12 m6 l2">
@@ -115,12 +114,11 @@
                         <!-- quantity -->
                         <div class="col s12 m6 l2">
                             <input type="number" value="<?php echo $item['item_quantity'];?>" id="quantity" name="quantity" class="center">
-                            <input class="btn orange lighten-1" type="submit" name="updatebtn" value="Update" style="margin-top:5px;" onclick="submitFormupdate('update',<?php echo $item['product_id']; ?>)">
+                            <input class="btn orange lighten-1" type="submit" name="updatebtn" value="Update" style="margin-top:5px;" onclick="submitForm('update',<?php echo $item['product_id']; ?>)">
                         </div>
                         <!-- ========= -->
                         <!-- total for each item -->                   
                     </div>
-                <!-- </form> -->
                <div class="divider black"></div>
             <?php }
                 }
@@ -136,12 +134,6 @@
     </body>
     <script>
         function submitForm(action, id){
-            var form = document.getElementById('thisform');
-            form.action = "?action=" + action + "&id=" + id;
-            form.submit();
-        }
-
-        function submitFormupdate(action, id){
             var form = document.getElementById('thisform');
             form.action = "?action=" + action + "&id=" + id;
             form.submit();
