@@ -49,14 +49,26 @@
             self::createView($route);
         }
 
-        public static function RemoveCartItem($data)
+        public static function RemoveCartItem($data, $route)
         {
-           
-           if($data['action']='remove' && !empty($data['id']) && !empty($_SESSION['logged_user']))
+          if(isset($data['action'])){
+            if($data['action']=='remove' && !empty($data['id']) && !empty($_SESSION['logged_user']))
+            {
+                ProductModel::removeItem($data['id']);
+                header("Location: http://localhost/project5/TechMart/list_products/cart", TRUE, 301);
+            }
+          }
+        }
+
+        public static function updateCartItem($data, $btnname)
+        {
+          if(isset($data['action']) && isset($_POST[$btnname])){
+            if($data['action']=='update' && !empty($data['id']) && !empty($_SESSION['logged_user']))
            {
-               ProductModel::removeItem($data['id']);
-               header("Refresh:1");
+                ProductModel::updateItem($data['id'],$_POST['quantity']);
+                header("Location: http://localhost/project5/TechMart/list_products/cart", TRUE, 301);
            }
+        }
         }
     }
 ?>

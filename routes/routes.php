@@ -51,6 +51,10 @@
         ProductController::RemoveCartItem($_GET,'cart');
     });
 
+    Route::get('list_products/cart',function(){
+        ProductController::updateCartItem($_GET,'updatebtn');
+    });
+
     /* user login and signup */
     
     Route::get('userlogin',function(){

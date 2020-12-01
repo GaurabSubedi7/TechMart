@@ -43,11 +43,11 @@
             $st_uid->bindParam(':username',$username);
             $st_uid->execute();
             $userId = $st_uid->fetch();
-             $st = self::$pdo->prepare("insert into carts values(:pid,:uid)");
+             $st = self::$pdo->prepare("insert into carts (product_id, user_id) values(:pid,:uid)");
              $st->bindParam(':pid',$productId);
             $st->bindParam(':uid',$userId['user_id']);
              $st->execute();
-             header("Location: http://localhost/project5/TechMart/list_products", TRUE, 301);
+             header("Location: http://localhost/project5/TechMart/list_products/cart", TRUE, 301);
         }
 
         public static function GetCartItem()
@@ -66,8 +66,15 @@
             $removeStatement->bindParam(':userId',$_SESSION['user_id']);
             $removeStatement->bindParam(':pid',$id);
             $removeStatement->execute();
-           
-       
+        }
+
+        public static function updateItem($id, $qty)
+        {
+            $removeStatement = self::$pdo->prepare("update carts set item_quantity = :qty where product_id = :pid AND user_id = :userId");
+            $removeStatement->bindParam(':userId',$_SESSION['user_id']);
+            $removeStatement->bindParam(':pid',$id);
+            $removeStatement->bindParam(':qty',$qty);
+            $removeStatement->execute();
         }
      
     }   
