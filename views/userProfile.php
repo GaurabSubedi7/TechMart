@@ -7,6 +7,26 @@
     <title>User Profile</title>
     <link rel="stylesheet" type="text/css" href="./views/public/css/style.css">
     <?php include 'partials/Elinks.php'; ?>
+    <style>
+        #profileImg:hover{
+            opacity: 80%;
+        }
+
+        .modal{
+            max-height:500px !important;
+        }
+
+        .avatarBtn{
+            border:none;
+            background: none;
+            padding:0;
+        }
+
+        .avatarBtn:focus{
+            background-color: white;
+            outline: none;
+        }
+    </style>
 </head>
 <body class="grey lighten-4">
     <!-- navbar for the cart -->
@@ -41,7 +61,7 @@
                     <p class="grey-text text-lighten-2 right"><b>Edit Your Profile</b><i class="material-icons left">edit</i></p>
                 </div>
                 <div class="col s12 m12 l12 center">
-                    <img src="./views/public/img/town.jpg" alt="" class="responsive-img circle" style="width:100px;height:100px;">
+                        <a href="#" data-target="avatarWindow" class="modal-trigger"><img src="./views/public/img/avatars/<?php echo ($avatars[0]['avatar_image']); ?>" alt="" class="responsive-img circle" id="profileImg" style="margin-left:20px;width:100px;height:100px;"><i class="tiny material-icons grey-text text-lighten-2">edit</i></a>
                 </div>
                 <div class="col s12 m12 l12 center">
                     <h4 class="white-text"><?php echo ucfirst($user['username']); ?></h4>
@@ -74,12 +94,39 @@
                     <label for="address">Address</label>
                 </div>
                 <div class="col s12 m6 l3" style="padding-top: 1vw;">
-                    <input type="submit" class="btn teal darken-4" name="update" value="Update">
+                    <input type="submit" class="btn teal darken-4" onclick="M.toast({html: 'Updated Successfully'})" name="update" value="Update">
                 </div>
             </div>
         </form>
         <div class="footer-copyright" style="margin-top:50px;margin-bottom:5px;">
             <div class="container center-align">&copy; 2020 TechMart</div>
         </div>
+
+        <!-- avatar selection window -->
+        <form action="" method="post" id="thisform">
+            <div id="avatarWindow" class="modal bottom-sheet">
+                <div class="modal-content">
+                    <?php 
+                        foreach($avatarSets as $myAvatars){ ?>
+                            <input type="hidden" value="<?php echo $myAvatars['avatar_id']; ?>">
+                            <button name="updateAvatar" class="avatarBtn" onclick="submitForm('updateAvatar',<?php echo $myAvatars['avatar_id'];?>)">
+                                <img src="./views/public/img/avatars/<?php echo ($myAvatars['avatar_image']); ?>" alt="" class="responsive-img circle" id="profileImg" style="margin-left:20px;width:100px;height:100px;margin-top:30px;">
+                            </button>
+                    <?php    }
+                    ?>
+                </div>
+            </div>
+        </form>
+    <script>
+         function submitForm(action, id){
+            var form = document.getElementById('thisform');
+            form.action = "?action=" + action + "&id=" + id;
+            form.submit();
+        }
+
+        $(document).ready(function(){
+            $('.modal').modal();
+        });
+    </script>
 </body>
 </html>

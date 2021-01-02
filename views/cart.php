@@ -25,6 +25,11 @@
             .search-icon{
                 width: 200px;
             }
+
+            .modal {
+                max-height: 500px; 
+                overflow: visible;
+            }
         </style>
     </head>
     <body>
@@ -96,7 +101,8 @@
                 <div class="col m3 l3 center"><h6><b>Price</b></h6></div>
                 <div class="col m3 l2 center"><h6><b>Quantity</b></h6></div>
                 <div class="col m3 l2 right"><h6><b>Total</b></h6></div>
-            </div><form method="post" id="thisform">
+            </div>
+            <form method="post" id="thisform">
             <?php
             foreach($cartItem as $item)
             {
@@ -131,21 +137,89 @@
                <div class="divider black"></div>
             <?php } ?>
                 <div style="margin-left:20px;">
-                <p class="flow-text">Subtotal : Rs. <?php echo $total; ?></p>
+                <p class="flow-text">Subtotal : NRs. <?php echo $total; ?></p>
                 <a href="/project5/TechMart/list_products" class="btn waves-effect grey darken-3"><b>Continue Shopping</b></a>
-                <a href="#" class="btn waves-effect"><b>Checkout</b></a>
+                <a href="#" data-target="checkoutWindow" class="btn waves-effect modal-trigger"><b>Checkout</b></a>
             </div>
             <div class="footer-copyright" style="margin-top:110px;margin-bottom:10px;">
                 <div class="container center-align">&copy; 2020 TechMart</div>
             </div>
-            </body>
             <?php } ?>
         </form>
-    <script>
-        function submitForm(action, id){
-            var form = document.getElementById('thisform');
+        
+        <!-- checkout window -->
+        <div id="checkoutWindow" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h4><b>SUMMARY</b></h4>
+                <div class="row">
+                    <div class="col s6 m6 l6">
+                        <h5>Subtotal</h5>
+                    </div>
+                    <div class="col s4 m4 l4 push-l1">
+                        <h5><?php echo 'NRs. '.$total; ?></h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s6 m6 l6">
+                        <h5>Delivery Charge</h5>
+                    </div>
+                    <div class="col s4 m4 l4 push-l1">
+                        <h5>NRs. 60</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s6 m6 l6">
+                        <h5><b>TOTAL</b></h5>
+                    </div>
+                    <div class="col s4 m4 l4 push-l1">
+                        <h5><b><?php $total=$total+60;echo 'NRs. '.$total; ?></b></h5>
+                    </div>
+                </div>
+                <h5>Payment method</h5>
+                <form action="#">
+                    <p>
+                        <label>
+                            <input class="with-gap" name="group1" type="radio">
+                            <span><i class="fas fa-money-bill-wave"> Cash on delivery</i></span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input class="with-gap" name="group1" type="radio">
+                            <span><i class="fas fa-credit-card"> Credit Card</i></span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="checkbox" class="filled-in"/>
+                            <span>By checking this, you accept all our <a href="#">Terms and Conditions</a>.</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="checkbox" class="filled-in"/>
+                            <span>Receive email from TechMart about new products and offers in future.</span>
+                        </label>
+                    </p>
+                </form>
+            </div>
+            <div class="modal-footer grey darken-4">
+                <a href="#!" class="modal-close waves-effect waves-dark btn orange darken-3">Place Order</a>
+            </div>
+        </div>
+        
+        
+        <script>
+            function submitForm(action, id){
+                var form = document.getElementById('thisform');
             form.action = "?action=" + action + "&id=" + id;
             form.submit();
         }
+        
+        //for checkout modal
+        $(document).ready(function(){
+            $('.modal').modal();
+        });
     </script>
+</body>
 </html>

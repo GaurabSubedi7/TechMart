@@ -10,7 +10,7 @@
                 $st_uid = self::$pdo->prepare("select user_id from users where username = :username");
                 $st_uid->bindParam(':username',$username);
                 $st_uid->execute();
-                $userId = $st_uid->fetch();
+                $userId = $st_uid->fetch(); 
                 $_SESSION['user_id']=$userId['user_id'];
                 $st = self::$pdo->prepare(" select * from products where product_id != ALL(select product_id from carts where user_id =  :user_id)");
                 $st->bindParam(':user_id',$_SESSION['user_id']);

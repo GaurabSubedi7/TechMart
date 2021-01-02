@@ -1,14 +1,36 @@
 header{
-    background: url('../img/drone_sunset.jpg');
+    background:  linear-gradient(rgba(0, 0, 0, 0.5),rgb(0, 0, 0, 0.5)), url('../img/shoppingcart_img.jpg');
     background-size: cover;
     background-position: center;
-    min-height: 1000px;
+    min-height: 700px;
 }
 
 @media screen and (max-width: 700px){
     header{
-        min-height: 500px;
+        min-height: 600px;
     }
+}
+
+.carousel-slider{
+    height: 600px !important;
+    background-size: contain;
+}
+
+.homecontainer{
+    position: absolute;
+    top: 45%;
+    left: 34%;
+    transform: translate(-30%, -50%);
+}
+
+.hometext{
+    text-shadow: 1px 1px 5px rgb(58, 57, 57);
+    font-weight: bold;
+}
+
+.hometextbtn{
+    font-weight: bold;
+    border-radius: 5px !important;
 }
 
 .section{

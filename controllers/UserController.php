@@ -69,17 +69,29 @@
         }
         public static function showUserProfile($route)
         {
-                    $user = UserModel::GetUserData();
-                    $data = ['user'=>$user];
-
-                    self::createView($route, $data);
+            $avatar = UserModel::getUserAvatar();
+            $avatarData = ['avatars'=>$avatar];
+            $user = UserModel::GetUserData();
+            $data = ['user'=>$user];
+            
+            self::createView($route, $data, $avatarData);
         }
 
         public static function updateProfile($post,$btnName)
         {
-            if(isset($_POST[$btnName]))
+            if(isset($_POST[$btnName]) && $btnName == "update")
             {
                 UserModel::UpdateUser($post);
+            }   
+        }
+
+        public static function changeUserAvatar($post, $btnName){
+            if(isset($_POST[$btnName]) && $btnName == "updateAvatar")
+            {
+               if($post['action']=='updateAvatar'){
+                   UserModel::updateUserAvatar($post['id']);
+                   header("Location: http://localhost/project5/TechMart/userProfile", TRUE, 301);
+               }
             }
         }
     }

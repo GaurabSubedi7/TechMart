@@ -4,6 +4,14 @@ $(document).ready(function(){
     $('.scrollspy').scrollSpy();
     $('.dropdown-trigger').dropdown();
     $('.materialboxed').materialbox();
+  //   $('.carousel.carousel-slider').carousel({
+  //     dist: 0,
+  //     fullWidth: false,
+  //     indicators: true
+  //   });autoplay();
+  // function autoplay() {
+  //     $('.carousel').carousel('next');
+  //     setTimeout(autoplay, 4500); }
   });
 
 var header = document.getElementById("navlist");

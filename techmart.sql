@@ -42,7 +42,27 @@ CREATE TABLE `vendors` (
 
 CREATE TABLE `carts` (
 	`product_id` INT NOT NULL,
-	`user_id` INT NOT NULL
+	`user_id` INT NOT NULL,
+	`item_quantity` INT NOT NULL DEFAULT '1',
+	PRIMARY KEY (`product_id`,`user_id`)
+);
+
+CREATE TABLE `avatars` (
+	`avatar_id` INT NOT NULL AUTO_INCREMENT,
+	`avatar_image` varchar(255) NOT NULL DEFAULT 'profile.jpg',
+	PRIMARY KEY (`avatar_id`)
+);
+
+CREATE TABLE `user_avatars` (
+	`user_id` INT NOT NULL,
+	`avatar_id` INT NOT NULL,
+	PRIMARY KEY (`user_id`,`avatar_id`)
+);
+
+CREATE TABLE `vendor_avatars` (
+	`vendor_id` INT NOT NULL,
+	`avatar_id` INT NOT NULL,
+	PRIMARY KEY (`vendor_id`,`avatar_id`)
 );
 
 ALTER TABLE `products` ADD CONSTRAINT `products_fk0` FOREIGN KEY (`category_id`) REFERENCES `categories`(`category_id`);
@@ -52,3 +72,40 @@ ALTER TABLE `products` ADD CONSTRAINT `products_fk1` FOREIGN KEY (`vendor_id`) R
 ALTER TABLE `carts` ADD CONSTRAINT `carts_fk0` FOREIGN KEY (`product_id`) REFERENCES `products`(`product_id`);
 
 ALTER TABLE `carts` ADD CONSTRAINT `carts_fk1` FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`);
+
+ALTER TABLE `user_avatars` ADD CONSTRAINT `user_avatars_fk0` FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`);
+
+ALTER TABLE `user_avatars` ADD CONSTRAINT `user_avatars_fk1` FOREIGN KEY (`avatar_id`) REFERENCES `avatars`(`avatar_id`);
+
+ALTER TABLE `vendor_avatars` ADD CONSTRAINT `vendor_avatars_fk0` FOREIGN KEY (`vendor_id`) REFERENCES `vendors`(`vendor_id`);
+
+ALTER TABLE `vendor_avatars` ADD CONSTRAINT `vendor_avatars_fk1` FOREIGN KEY (`avatar_id`) REFERENCES `avatars`(`avatar_id`);
+
+INSERT INTO `avatars` (`avatar_image`) VALUES ('1.png');
+INSERT INTO `avatars` (`avatar_image`) VALUES ('2.jpg');
+INSERT INTO `avatars` (`avatar_image`) VALUES ('3.png');
+INSERT INTO `avatars` (`avatar_image`) VALUES ('4.jpeg');
+INSERT INTO `avatars` (`avatar_image`) VALUES ('5.jpg');
+INSERT INTO `avatars` (`avatar_image`) VALUES ('6.jpg');
+INSERT INTO `avatars` (`avatar_image`) VALUES ('7.jpg');
+INSERT INTO `avatars` (`avatar_image`) VALUES ('8.jpg');
+INSERT INTO `avatars` (`avatar_image`) VALUES ('9.jpg');
+INSERT INTO `avatars` (`avatar_image`) VALUES ('10.jpeg');
+INSERT INTO `avatars` (`avatar_image`) VALUES ('11.jpg');
+INSERT INTO `avatars` (`avatar_image`) VALUES ('12.jpg');
+INSERT INTO `avatars` (`avatar_image`) VALUES ('13.jpg');
+INSERT INTO `avatars` (`avatar_image`) VALUES ('14.png');
+INSERT INTO `avatars` (`avatar_image`) VALUES ('15.png');
+INSERT INTO `avatars` (`avatar_image`) VALUES ('16.jpg');
+INSERT INTO `avatars` (`avatar_image`) VALUES ('18.jpg');
+INSERT INTO `avatars` (`avatar_image`) VALUES ('19.jpeg');
+INSERT INTO `avatars` (`avatar_image`) VALUES ('17.png');
+INSERT INTO `avatars` (`avatar_image`) VALUES ('20.png');
+INSERT INTO `avatars` (`avatar_image`) VALUES ('21.jpg');
+INSERT INTO `avatars` (`avatar_image`) VALUES ('22.jpeg');
+INSERT INTO `avatars` (`avatar_image`) VALUES ('23.png');
+INSERT INTO `avatars` (`avatar_image`) VALUES ('24.jpg');
+INSERT INTO `avatars` (`avatar_image`) VALUES ('25.jpg');
+INSERT INTO `avatars` (`avatar_image`) VALUES ('26.jpg');
+INSERT INTO `avatars` (`avatar_image`) VALUES ('27.png');
+INSERT INTO `avatars` (`avatar_image`) VALUES ('28.png');

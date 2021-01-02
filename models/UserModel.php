@@ -76,5 +76,32 @@
             exit();
         }
 
+        public static function getUserAvatar()
+        {
+            $username = $_SESSION['logged_user'];
+                $st_uid = self::$pdo->prepare("select user_id from users where username = :username");
+                $st_uid->bindParam(':username',$username);
+                $st_uid->execute();
+                $userId = $st_uid->fetch();
+                $_SESSION['user_id']=$userId['user_id'];
+            $avatarStatement = self::$pdo->prepare("SELECT * FROM user_avatars INNER JOIN avatars ON user_avatars.avatar_id = avatars.avatar_id AND user_avatars.user_id = :userId");
+            $avatarStatement->bindParam(':userId',$_SESSION['user_id']);
+            $avatarStatement->execute();
+            $avatars = $avatarStatement->fetchall();
+            return $avatars;
+        }
+
+        public static function updateUserAvatar($avatar_id){
+            $username = $_SESSION['logged_user'];
+                $st_uid = self::$pdo->prepare("select user_id from users where username = :username");
+                $st_uid->bindParam(':username',$username);
+                $st_uid->execute();
+                $userId = $st_uid->fetch();
+                $_SESSION['user_id']=$userId['user_id'];
+            $st = self::$pdo->prepare("update user_avatars set avatar_id = :avatar_id where user_id = :user_id");
+            $st->bindParam(':avatar_id',$avatar_id);
+            $st->bindParam(':user_id',$_SESSION['user_id']);
+            $st->execute();
+        }
     }   
 ?>

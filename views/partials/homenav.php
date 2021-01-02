@@ -1,4 +1,4 @@
-<nav class="navwrapper homenav grey transparent">
+<nav class="navwrapper homenav grey darken-4">
     <div class="container">
         <a href="/project5/TechMart" class="brand-logo"><img src="./views/public/img/logo-techmart.png" alt="logo" class="responsive-img logo"></a>
         <a href="" class="sidenav-trigger" data-target="mobile-menu">
@@ -15,10 +15,10 @@
                 }
                 if(empty($_SESSION['logged_member']))
                 {
-            ?>
-                <li><a href="#" class="homenavlist waves-effect waves-light active">About</a></li>
-                <li><a href="#" class="homenavlist waves-effect waves-light dropdown-trigger" data-target="dropme1">Shop With Us<i class="material-icons right">arrow_drop_down</i></a></li>
-                <li><a href="#" class="homenavlist waves-effect waves-light dropdown-trigger" data-target="dropme2">Sell With Us<i class="material-icons right">arrow_drop_down</i></a></li>
+            ?>  
+                <li><a href="#" class="homenavlist waves-effect waves-dark active">About</a></li>
+                <li><a href="#" class="homenavlist waves-effect waves-dark dropdown-trigger" data-target="dropme1">Shop With Us<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a href="#" class="homenavlist waves-effect waves-dark dropdown-trigger" data-target="dropme2">Sell With Us<i class="material-icons right">arrow_drop_down</i></a></li>
                 <?php
             }else{
                 if(!empty($_SESSION["logged_user"])){?>
@@ -28,13 +28,13 @@
                 }
                 
                 if(!empty($_SESSION["logged_vendor"])){?>
-                    <li><a href="vendor/upload" class="homenavlist waves-effect waves-light active"> <?php echo $_SESSION['logged_vendor'];?></a></li>
+                    <li><a href="vendor/upload" class="homenavlist waves-effect waves-dark active"> <?php echo $_SESSION['logged_vendor'];?></a></li>
             <?php  }
             ?>
-            <li><a href="logout" class="homenavlist waves-effect waves-light active">logout</a></li>
+            <li><a href="logout" class="homenavlist waves-effect waves-dark active">logout</a></li>
                 
             <?php }   ?>
-            <li><a href="list_products" class="homenavlist waves-effect waves-light">Visit Store</a></li>
+            <li><a href="list_products" class="homenavlist waves-effect waves-dark">Visit Store</a></li>
         </ul>
      
  
@@ -68,3 +68,9 @@
         </ul>
     </div>
 </nav>
+
+<div class="homecontainer">
+    <h1 class="hometext left-align white-text">Welcome to TechMart.</h1>
+    <p class="flow-text left-align white-text">Discover the best marketplace for your technological accessories.</p>
+    <a href="list_products" class="btn-large waves-effect waves-dark hometextbtn orange darken-4">Start Shopping</a>
+</div>

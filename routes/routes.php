@@ -78,6 +78,11 @@
     Route::post('userProfile',function(){
         UserController::UpdateProfile($_POST,"update");
     });
+
+    Route::post('userProfile',function(){
+        UserController::changeUserAvatar($_GET,"updateAvatar");
+    });
+
     Route::get('logout',function(){
         UserController::logoutUser('logout');
     });

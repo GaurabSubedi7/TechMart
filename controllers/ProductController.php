@@ -77,5 +77,14 @@
                 self::createView($route, $data, $cartdata);
             }
         }
+        public static function showUserAvatar($route)
+        {
+            if(!empty($_SESSION['logged_user']))
+            {
+                $cartItem = ProductModel::GetCartItem();
+                $data = ['cartItem'=>$cartItem];
+                self::createView($route, $data);
+            }
+        }
     }
 ?>
