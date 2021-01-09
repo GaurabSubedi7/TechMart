@@ -28,7 +28,7 @@
                 }
                 
                 if(!empty($_SESSION["logged_vendor"])){?>
-                    <li><a href="vendor/upload" class="homenavlist waves-effect waves-dark active"> <?php echo $_SESSION['logged_vendor'];?></a></li>
+                    <li><a href="vendorProfile" class="homenavlist waves-effect waves-dark active"> <?php echo $_SESSION['logged_vendor'];?></a></li>
             <?php  }
             ?>
             <li><a href="logout" class="homenavlist waves-effect waves-dark active">logout</a></li>
@@ -72,5 +72,5 @@
 <div class="homecontainer">
     <h1 class="hometext left-align white-text">Welcome to TechMart.</h1>
     <p class="flow-text left-align white-text">Discover the best marketplace for your technological accessories.</p>
-    <a href="list_products" class="btn-large waves-effect waves-dark hometextbtn orange darken-4">Start Shopping</a>
+    <a href="list_products" class="btn-large waves-effect waves-dark hometextbtn orange darken-4 hoverable">Start Shopping</a>
 </div>

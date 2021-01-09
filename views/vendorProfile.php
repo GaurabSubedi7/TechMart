@@ -64,37 +64,27 @@
                         <a href="#" data-target="avatarWindow" class="modal-trigger"><img src="./views/public/img/avatars/<?php echo ($avatars[0]['avatar_image']); ?>" alt="" class="responsive-img circle" id="profileImg" style="margin-left:20px;width:100px;height:100px;"><i class="tiny material-icons grey-text text-lighten-2">edit</i></a>
                 </div>
                 <div class="col s12 m12 l12 center">
-                    <h4 class="white-text"><?php echo ucfirst($user['username']); ?></h4>
+                    <h4 class="white-text"><?php echo ucfirst($vendor['vendor_name']); ?></h4>
                 </div>
             </div>
             <div class="row container" style="padding-top: 1vw;
                 padding-bottom: 1vw;">
                 <div class="col s12 m6 l3">
-                    <input id="first_name" type="text" name="first_name" value= "<?php echo $user['first_name'] ?>">
-                    <label for="first_name">First Name</label>
-                </div>
-                <div class="col s12 m6 l3 offset-l2">
-                    <input id="last_name" type="text" name="last_name" value= "<?php echo $user['last_name'] ?>">
-                    <label for="last_name">Last Name</label>
-                </div>
-            </div>
-            <div class="row container">
-                <div class="col s12 m6 l3">
-                    <input id="phone_number" type="text" name="phone_number" value="<?php echo $user['phone_number'];?>">
+                    <input id="phone_number" type="text" name="phone_number" value="<?php echo $vendor['phone_number'];?>">
                     <label for="phone_number">Phone Number</label>
                 </div>
                 <div class="col s12 m6 l3 offset-l2">
-                    <input id="email" type="text" name="email" value= "<?php echo $user['email'];?>">
+                    <input id="email" type="text" name="email" value= "<?php echo $vendor['email'];?>">
                     <label for="email">Email Address</label>
                 </div>
             </div>
             <div class="row container">
                 <div class="col s12 m6 l5">
-                    <input id="address" type="text" name="address" value= "<?php echo $user['address']?>">
+                    <input id="address" type="text" name="address" value= "<?php echo $vendor['address']?>">
                     <label for="address">Address</label>
                 </div>
                 <div class="col s12 m6 l3" style="padding-top: 1vw;">
-                    <input type="submit" class="btn teal darken-4" onclick="M.toast({html: 'Updated Successfully'})" name="updateUser" value="Update">
+                    <input type="submit" class="btn teal darken-4" onclick="M.toast({html: 'Updated Successfully'})" name="updateVendor" value="Update">
                 </div>
             </div>
         </form>
@@ -109,7 +99,7 @@
                     <?php 
                         foreach($avatarSets as $myAvatars){ ?>
                             <input type="hidden" value="<?php echo $myAvatars['avatar_id']; ?>">
-                            <button name="updateAvatar" class="avatarBtn" onclick="submitForm('updateAvatar',<?php echo $myAvatars['avatar_id'];?>)">
+                            <button name="updateVendorAvatar" class="avatarBtn" onclick="submitForm('updateVendorAvatar',<?php echo $myAvatars['avatar_id'];?>)">
                                 <img src="./views/public/img/avatars/<?php echo ($myAvatars['avatar_image']); ?>" alt="" class="responsive-img circle" id="profileImg" style="margin-left:20px;width:100px;height:100px;margin-top:30px;">
                             </button>
                     <?php    }

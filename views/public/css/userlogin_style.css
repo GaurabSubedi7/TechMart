@@ -4,7 +4,7 @@
     background-size: cover;
     background-position: center;
     backdrop-filter: blur(9px);
-    height: 740px;
+    height: 692px;
 }
 
 .input-field input{
@@ -22,7 +22,7 @@
 .my-container{
     background: rgb(0, 0, 0, .6);
     padding: 3vw 6vw 3vw 5vw;
-    border-radius: 20px;
+    border-radius: 15px;
 }
 
 .hideShowPassword-wrapper{

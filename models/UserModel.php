@@ -48,8 +48,21 @@
            $st->bindParam(":number",$data['phone_number']);
            $st->bindParam(":password",$data['password']);
            $st->bindParam(":address",$data['address']);
-         $st->execute();
+           $st->execute();
            return 1;
+        }
+
+        public static function addAvatar($data){
+            $username = $_SESSION['logged_user'];
+            $st_uid = self::$pdo->prepare("select user_id from users where username = :username");
+            $st_uid->bindParam(':username',$username);
+            $st_uid->execute();
+            $userId = $st_uid->fetch();
+            $_SESSION['user_id']=$userId['user_id'];
+            $uid = $_SESSION['user_id'];
+            $avatarId = $data['user_avatar_id'];
+            $st2 = self::$pdo->prepare("insert into user_avatars values($uid, $avatarId)");
+            $st2->execute();
         }
 
         public static function GetUserData()

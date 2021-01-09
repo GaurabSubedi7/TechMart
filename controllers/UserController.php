@@ -54,6 +54,7 @@
                     $stat = 0;
                     $stat = UserModel::addUser($post);
                     $_SESSION['logged_user'] = $post['username'];
+                    Usermodel::addAvatar($post);
                     header("Location: http://localhost/project5/TechMart/", TRUE, 301);
                     ob_enf_flush();
                 }
@@ -79,7 +80,7 @@
 
         public static function updateProfile($post,$btnName)
         {
-            if(isset($_POST[$btnName]) && $btnName == "update")
+            if(isset($_POST[$btnName]) && $btnName == "updateUser")
             {
                 UserModel::UpdateUser($post);
             }   

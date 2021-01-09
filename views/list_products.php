@@ -37,11 +37,11 @@
                         </nav>
                     </li>
                     <?php
-                        if(!empty($_SESSION['logged_user']))
+                        if(!empty($_SESSION['logged_user']) || !empty($_SESSION['logged_vendor']))
                         {
                           $cartCount = 0;
                             foreach($cartItem as $item)
-                            {
+                            { 
                                 $cartCount += 1; }
                           ?>
                             <li>

@@ -13,7 +13,7 @@
 </head>
 <body class="loginpage">
     <div class="container">
-        <a href="/project5/TechMart"><img src="./views/public/img/logo-techmart.png" alt="logo" class="responsive-img"></a>
+        <a href="/project5/TechMart"><img src="./views/public/img/logo-techmart.png" alt="logo" class="responsive-img" style="height:70px;width:240px;"></a>
         <div class="row">
             <div class="col s12 l12">
                 <h3 class="white-text center-align"><b>Login</b></h3>

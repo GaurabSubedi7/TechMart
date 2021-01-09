@@ -18,6 +18,7 @@
     Route::set('vendor/upload');
     Route::set('list_products/cart');
     Route::set('userProfile');
+    Route::set('vendorProfile');
     
     Route::get('index.php', function(){
         IndexController::createView('home');
@@ -71,17 +72,32 @@
         UserController::postSignup($_POST,"usersignup");
     });
 
+    // profiles for vendor and user
     Route::get('userProfile',function(){
         UserController::showUserProfile('userProfile');
     });
 
     Route::post('userProfile',function(){
-        UserController::UpdateProfile($_POST,"update");
+        UserController::UpdateProfile($_POST,"updateUser");
     });
 
     Route::post('userProfile',function(){
         UserController::changeUserAvatar($_GET,"updateAvatar");
     });
+
+    Route::get('vendorProfile',function(){
+        VendorController::showVendorProfile('vendorProfile');
+    });
+
+    Route::post('vendorProfile',function(){
+        VendorController::updateVendorProfile($_POST,"updateVendor");
+    });
+
+    Route::post('vendorProfile',function(){
+        VendorController::changeVendorAvatar($_GET,"updateVendorAvatar");
+    });
+
+    // =====================================
 
     Route::get('logout',function(){
         UserController::logoutUser('logout');
