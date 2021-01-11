@@ -54,6 +54,7 @@
     <div class="input-field">
     <h4 class="grey-text text-darken-4">Categories</h4>
                                       <select name="categories">
+                                      <option value="0">All</option>
                                           <?php 
                                           foreach($categoriesItem as $category)
                                             {?>

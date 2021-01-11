@@ -78,8 +78,13 @@
                 $st_uid->execute();
                 $userId = $st_uid->fetch();
                 $_SESSION['user_id']=$userId['user_id'];
-                
-                $st = self::$pdo->prepare("select * from products where category_id = '$categoryId' AND product_price >='$minPrice' AND product_price <= '$maxPrice' AND product_id != ALL(select product_id from carts where user_id = :user_id) AND product_name like '%$searchQuery%'");
+                if($categoryId == "0")
+                {
+                    $st = self::$pdo->prepare("select * from products where product_price >='$minPrice' AND product_price <= '$maxPrice' AND product_id != ALL(select product_id from carts where user_id = :user_id) AND product_name like '%$searchQuery%'");
+                }
+                else{
+                    $st = self::$pdo->prepare("select * from products where category_id = '$categoryId' AND product_price >='$minPrice' AND product_price <= '$maxPrice' AND product_id != ALL(select product_id from carts where user_id = :user_id) AND product_name like '%$searchQuery%'");
+                }
                 $st->bindParam(':user_id',$_SESSION['user_id']);
                 // $st->bindParam(':searchQuery',$searchQuery);
                 $st->execute();
@@ -88,7 +93,14 @@
             
             }
             else{
+               if($categoryId == "0")
+               {
+                $st = self::$pdo->prepare("select * from products where product_price >='$minPrice' AND product_price <= '$maxPrice' AND product_name like '%$searchQuery%'");
+               }
+               else
+               {
                 $st = self::$pdo->prepare("select * from products where category_id = '$categoryId' AND product_price >='$minPrice' AND product_price <= '$maxPrice' AND product_name like '%$searchQuery%'");
+               }
                 // $st->bindParam(':searchQuery',$searchQuery);
                 $st->execute();
                 $products = $st->fetchall();
@@ -98,7 +110,7 @@
 
         public static function GetCategories()
         {
-            $st = self::$pdo->prepare("select * from categories inner join products on categories.category_id = products.category_id ORDER BY category_name");
+            $st = self::$pdo->prepare("select * from categories ORDER BY category_name");
             $st->execute();
             
             $Categoriesdata = $st->fetchall();

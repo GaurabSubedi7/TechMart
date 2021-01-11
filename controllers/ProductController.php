@@ -74,11 +74,13 @@
                 // for cart count
                 $cartItem = ProductModel::GetCartItem();
                 $cartdata = ['cartItem'=>$cartItem];
-                var_dump($get);
+
+                $categoriesItem = ProductModel::GetCategories();
+                $categoriesData = ['categoriesItem'=>$categoriesItem];
                 //==============
                 $products = ProductModel::searchProducts($get['searchKeyword'],$get['categories'],$get['max_price'],$get['min_price']);
                 $data = ['filteredProducts'=>$products];
-                self::createView($route, $data, $cartdata);
+                self::createView($route, $data, $cartdata,$categoriesData);
             }
         }
         public static function showUserAvatar($route)
