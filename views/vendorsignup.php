@@ -17,7 +17,7 @@
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <title>Usersignup</title>
+    <title>Vendorsignup</title>
     <style>
         .bold{
             font-weight: bold;

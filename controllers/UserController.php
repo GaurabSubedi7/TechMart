@@ -34,6 +34,10 @@
                    // $_SESSION['logged_user'] = $checkinguser_status['username'];
                    $_SESSION['logged_user'] =  $checkUser_Status['username'];
                    $_SESSION['shopping_cart'] = array();
+                   $avatar = UserModel::getUserAvatar();
+                    $avatarData = ['avatars'=>$avatar];
+                    extract($avatarData);
+                    $_SESSION['user_avatar'] = $avatars[0]['avatar_image'];
                     header("Location: http://localhost/project5/TechMart/", TRUE, 301);
                     exit();
                 }

@@ -22,7 +22,10 @@
                 <?php
             }else{
                 if(!empty($_SESSION["logged_user"])){?>
-                    <li><a href="userProfile" class="homenavlist waves-effect waves-light active"> <?php echo $_SESSION['logged_user'];?></a></li>
+                    <li><a href="#" class="active dropdown-trigger" data-target="profileDrop" style="background:none;">
+                    <img src="./views/public/img/avatars/<?php echo $_SESSION['user_avatar']; ?>" alt="" class="responsive-img circle homeprofileimg" id="profileImg">
+                    </a></li>
+                    <li><a href="userProfile" class="homenavlist waves-effect waves-light active" style="margin-left:-25px;"> <?php echo $_SESSION['logged_user'];?></a></li>
                     <?php
                     
                 }
@@ -56,6 +59,11 @@
         </ul>
 
         <ul class="dropdown-content" id="d2">
+            <li><a href="vendorlogin" class="waves-effect waves-light">Sign In</a></li>
+            <li><a href="vendorsignup" class="waves-effect waves-light">Sign Up</a></li>
+        </ul>
+
+        <ul class="dropdown-content accessing" id="profileDrop">
             <li><a href="vendorlogin" class="waves-effect waves-light">Sign In</a></li>
             <li><a href="vendorsignup" class="waves-effect waves-light">Sign Up</a></li>
         </ul>
