@@ -10,6 +10,14 @@
             .search-icon{
                 width: 200px;
             }
+            .modal{ 
+              max-width: 300px;
+               }
+
+               #search {
+                margin-top: -60px;
+                margin-left: -300px;
+                }
         </style>
     </head>
     <body>
@@ -19,19 +27,64 @@
             <a href="/project5/TechMart" class="brand-logo hide-on-med-and-down"><img src="./views/public/img/logo-techmart.png" alt="logo" class="responsive-img logo"></a>
             <div class="container">         
                 <ul class="right">
+
+               
                     <!-- logo for mobile -->
                     <li>
                         <a href="/project5/TechMart" class="brand-logo left hide-on-large-only"><img src="./views/public/img/logo-techmart.png" alt="logo" class="responsive-img" style="height:50px;width:150px;"></a>
                     </li>
+
+                    
                     <!-- searchbar -->
                     <li class="search-icon" id="search-icon">
                         <nav class="z-depth-0 grey transparent">
                             <div class="nav-wrapper">
                                 <form action="" method="get">
-                                    <div class="input-field " id="searchbar">
+
+                                                                    <!-- advance search button -->
+
+              
+  <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn-flat modal-trigger grey darken-4 hide-on-med-and-down" href="#modal1"><i class="large material-icons white-text  ">filter_list</i>Filters</a>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <!-- from here -->
+    <div class="input-field">
+    <h4 class="grey-text text-darken-4">Categories</h4>
+                                      <select name="categories">
+                                          <?php 
+                                          foreach($categoriesItem as $category)
+                                            {?>
+                                              <option value="<?php echo $category['category_id']?>"><?php echo $category['category_name']?></option>
+                                              
+                                              <?php } ?>
+                                      </select>
+                                    </div>
+                                               <h4 class="grey-text text-darken-4">Price Range</h4> 
+                                    <!-- for price range -->
+                                              <input type="number" name="min_price" value="0" id="">
+                                              <input type="number" name="max_price" value="4000000" id="">
+                                    <!-- price range end -->
+                                    <input type="submit" value="search">
+                              <!-- to here -->
+                                      
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Apply</a>
+  </div>
+</div>
+        
+                                    <!-- advance search end -->
+
+                                                                      <div class="input-field " id="searchbar">
+                                  
                                         <input class="white-text transparent" id="search" name="searchKeyword" autocomplete="off" type="search" placeholder="Search" value="">
                                         <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                                     </div>
+                                    
+ 
                                 </form>
                             </div>
                         </nav>
@@ -153,10 +206,21 @@
             //     document.getElementById("content").innerHTML='<object type="text/html" data="http://localhost/project5/TechMart/list_products/cart"></object>';
             // }
 
+           
             $(document).ready(function(){
                 $('.collapsible').collapsible();
                 $('.dropdown-trigger').dropdown();
             });
+            //for dropdownmenu
+            $(document).ready(function(){
+              $('select').formSelect();
+            });
+
+            //for modal
+            $(document).ready(function(){
+              $('.modal').modal();
+            });
+
         </script>
     </body>
 </html>

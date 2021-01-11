@@ -7,10 +7,13 @@
                 // for cart count
                 $cartItem = ProductModel::GetCartItem();
                 $cartdata = ['cartItem'=>$cartItem];
+
+                $categoriesItem = ProductModel::GetCategories();
+                $categoriesData = ['categoriesItem'=>$categoriesItem];
                 //==============
                 $products = ProductModel::listProducts();
                 $data = ['products'=>$products];
-                self::createView($route, $data, $cartdata);
+                self::createView($route, $data, $cartdata,$categoriesData);
             }
         }
 
@@ -71,8 +74,9 @@
                 // for cart count
                 $cartItem = ProductModel::GetCartItem();
                 $cartdata = ['cartItem'=>$cartItem];
+                var_dump($get);
                 //==============
-                $products = ProductModel::searchProducts($get['searchKeyword']);
+                $products = ProductModel::searchProducts($get['searchKeyword'],$get['categories'],$get['max_price'],$get['min_price']);
                 $data = ['filteredProducts'=>$products];
                 self::createView($route, $data, $cartdata);
             }

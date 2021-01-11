@@ -1,4 +1,4 @@
-<?php
+    <?php
     class ProductModel extends BaseModel
     {
         public static function listProducts()
@@ -69,7 +69,7 @@
             $removeStatement->execute();
         }
         
-        public static function searchProducts($searchQuery){
+        public static function searchProducts($searchQuery,$categoryId ,$maxPrice, $minPrice){
             if(!empty($_SESSION['logged_user']))
             {
                 $username = $_SESSION['logged_user'];
@@ -78,7 +78,8 @@
                 $st_uid->execute();
                 $userId = $st_uid->fetch();
                 $_SESSION['user_id']=$userId['user_id'];
-                $st = self::$pdo->prepare("select * from products where product_id != ALL(select product_id from carts where user_id = :user_id) and product_name like '%$searchQuery%'");
+                
+                $st = self::$pdo->prepare("select * from products where category_id = '$categoryId' AND product_price >='$minPrice' AND product_price <= '$maxPrice' AND product_id != ALL(select product_id from carts where user_id = :user_id) AND product_name like '%$searchQuery%'");
                 $st->bindParam(':user_id',$_SESSION['user_id']);
                 // $st->bindParam(':searchQuery',$searchQuery);
                 $st->execute();
@@ -87,12 +88,21 @@
             
             }
             else{
-                $st = self::$pdo->prepare("select * from products INNER JOIN vendors ON products.vendor_id = vendors.vendor_id where product_name like '%$searchQuery%'");
+                $st = self::$pdo->prepare("select * from products where category_id = '$categoryId' AND product_price >='$minPrice' AND product_price <= '$maxPrice' AND product_name like '%$searchQuery%'");
                 // $st->bindParam(':searchQuery',$searchQuery);
                 $st->execute();
                 $products = $st->fetchall();
                 return $products;
             }
+        }
+
+        public static function GetCategories()
+        {
+            $st = self::$pdo->prepare("select * from categories inner join products on categories.category_id = products.category_id ORDER BY category_name");
+            $st->execute();
+            
+            $Categoriesdata = $st->fetchall();
+            return $Categoriesdata;
         }
     }   
 ?>
