@@ -26,7 +26,9 @@
         {
             $vendor_id = VendorModel::GetId();
             $data = ['vendor_id'=>$vendor_id];
-            self::createView($route ,$data);
+            $categoriesItem = ProductModel::GetCategories();
+            $categoriesData = ['categoriesItem'=>$categoriesItem];
+            self::createView($route ,$data, $categoriesData);
         }
 
         public static function postLogin($post,$btnName)
@@ -39,6 +41,10 @@
                    // $_SESSION['logged_user'] = $checkinguser_status['username'];
                    $_SESSION['logged_vendor'] =  $checkVendor_Status['vendor_name'];
                  //  $_SESSION['logged_user'] = $_SESSION['logged_vendor'];
+                 $avatar = VendorModel::getVendorAvatar();
+                    $avatarData = ['avatars'=>$avatar];
+                    extract($avatarData);
+                    $_SESSION['vendor_avatar'] = $avatars[0]['avatar_image'];
                     header("Location: http://localhost/project5/TechMart/", TRUE, 301);
                     exit();
                 }
@@ -74,10 +80,39 @@
         }
         public static function ProductPost($data)
         {
-            
-       //  var_dump($data);
-                    
+            if(isset($data['addProduct'])){
+                $target_dir = "/xampp/htdocs/project5/TechMart/views/public/img/";
+                $file_name = $_FILES['product_image']['name'];
+                $pic = VendorController::random_string(10).$file_name;
+                $target_file = $target_dir . basename($_FILES["product_image"]["name"]);
+                $uploadOk = 1;
+                $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+                // Check if image file is a actual image or fake image
+                if(isset($data["addProduct"])) {
+                    $check = getimagesize($_FILES["product_image"]["tmp_name"]);
+                    if($check !== false) {
+                        if(move_uploaded_file($_FILES['product_image']['tmp_name'],$target_dir.$pic)){
+                            $uploadOk = 1;
+                            VendorModel::uploadProduct($data, $pic);
+                        }else{echo "notsuccess";}
+                    } else {
+                        echo "File is not an image.";
+                        $uploadOk = 0;
+                    }
+                }
+            }
         }
+
+        public static function random_string($length) {
+            $key = '';
+            $keys = array_merge(range(0, 9), range('a', 'z'));
+         
+            for ($i = 0; $i < $length; $i++) {  
+                $key .= $keys[array_rand($keys)];
+            }
+         
+            return $key;
+         }
 
         public static function showVendorProfile($route)
         {
@@ -102,6 +137,10 @@
             {
                if($post['action']=='updateVendorAvatar'){
                    VendorModel::updateVendorAvatar($post['id']);
+                   $avatar = VendorModel::getVendorAvatar();
+                    $avatarData = ['avatars'=>$avatar];
+                    extract($avatarData);
+                    $_SESSION['vendor_avatar'] = $avatars[0]['avatar_image'];
                    header("Location: http://localhost/project5/TechMart/vendorProfile", TRUE, 301);
                }
             }

@@ -48,6 +48,9 @@
                         <nav class="z-depth-0 grey transparent">
                             <div class="nav-wrapper">
                                 <form action="/project5/TechMart/list_products" method="get">
+                                <input type="hidden" name="categories" value="0">
+                                <input type="hidden" name="min_price" value="0" id="">
+                                <input type="hidden" name="max_price" value="4000000" id="">
                                     <div class="input-field " id="searchbar">
                                         <input class="white-text transparent" id="search" name="searchKeyword" autocomplete="off" type="search" placeholder="Search" required>
                                         <label class="label-icon" for="search"><i class="material-icons">search</i></label>

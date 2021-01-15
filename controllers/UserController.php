@@ -95,6 +95,10 @@
             {
                if($post['action']=='updateAvatar'){
                    UserModel::updateUserAvatar($post['id']);
+                   $avatar = UserModel::getUserAvatar();
+                    $avatarData = ['avatars'=>$avatar];
+                    extract($avatarData);
+                    $_SESSION['user_avatar'] = $avatars[0]['avatar_image'];
                    header("Location: http://localhost/project5/TechMart/userProfile", TRUE, 301);
                }
             }

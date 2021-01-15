@@ -22,19 +22,25 @@
                 <?php
             }else{
                 if(!empty($_SESSION["logged_user"])){?>
-                    <li><a href="#" class="active dropdown-trigger" data-target="profileDrop" style="background:none;">
-                    <img src="./views/public/img/avatars/<?php echo $_SESSION['user_avatar']; ?>" alt="" class="responsive-img circle homeprofileimg" id="profileImg">
-                    </a></li>
-                    <li><a href="userProfile" class="homenavlist waves-effect waves-light active" style="margin-left:-25px;"> <?php echo $_SESSION['logged_user'];?></a></li>
+                    <li class="homeprofile homenavlist dropdown-trigger" data-target="profileDrop">
+                        <a href="#" class="left active" style="background:none;">
+                        <img src="./views/public/img/avatars/<?php echo $_SESSION['user_avatar']; ?>" alt="" class="responsive-img circle homeprofileimg" id="profileImg">
+                        </a>
+                        <a href="#" class="right" style="margin-left:-20px;background:none;"> <?php echo $_SESSION['logged_user'];?></a>
+                    </li>
                     <?php
                     
                 }
                 
                 if(!empty($_SESSION["logged_vendor"])){?>
-                    <li><a href="vendorProfile" class="homenavlist waves-effect waves-dark active"> <?php echo $_SESSION['logged_vendor'];?></a></li>
+                    <li class="homeprofile homenavlist dropdown-trigger" data-target="profileDrop2">
+                        <a href="#" class="left active" style="background:none;">
+                        <img src="./views/public/img/avatars/<?php echo $_SESSION['vendor_avatar']; ?>" alt="" class="responsive-img circle homeprofileimg" id="profileImg">
+                        </a>
+                        <a href="#" class="right" style="margin-left:-20px;background:none;"> <?php echo $_SESSION['logged_vendor'];?></a>
+                    </li>
             <?php  }
             ?>
-            <li><a href="logout" class="homenavlist waves-effect waves-dark active">logout</a></li>
                 
             <?php }   ?>
             <li><a href="list_products" class="homenavlist waves-effect waves-dark">Visit Store</a></li>
@@ -64,8 +70,14 @@
         </ul>
 
         <ul class="dropdown-content accessing" id="profileDrop">
-            <li><a href="vendorlogin" class="waves-effect waves-light">Sign In</a></li>
-            <li><a href="vendorsignup" class="waves-effect waves-light">Sign Up</a></li>
+            <li><a href="userProfile" class="waves-effect waves-light">View Profile</a></li>
+            <li><a href="logout" class="waves-effect waves-light">Log out</a></li>
+        </ul>
+
+        <ul class="dropdown-content accessing" id="profileDrop2">
+            <li><a href="vendorProfile" class="waves-effect waves-light">View Profile</a></li>
+            <li><a href="vendor/upload" class="waves-effect waves-light">Upload Product</a></li>
+            <li><a href="logout" class="waves-effect waves-light">Log out</a></li>
         </ul>
      
         <!-- hamburger menu -->

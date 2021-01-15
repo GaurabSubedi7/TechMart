@@ -53,23 +53,21 @@
     <!-- from here -->
     <div class="input-field">
     <h4 class="grey-text text-darken-4">Categories</h4>
-                                      <select name="categories">
-                                      <option value="0">All</option>
-                                          <?php 
-                                          foreach($categoriesItem as $category)
-                                            {?>
-                                              <option value="<?php echo $category['category_id']?>"><?php echo $category['category_name']?></option>
-                                              
-                                              <?php } ?>
-                                      </select>
-                                    </div>
-                                               <h4 class="grey-text text-darken-4">Price Range</h4> 
-                                    <!-- for price range -->
-                                              <input type="number" name="min_price" value="0" id="">
-                                              <input type="number" name="max_price" value="4000000" id="">
-                                    <!-- price range end -->
-                                    <input type="submit" value="search">
-                              <!-- to here -->
+    <select name="categories">
+      <option value="0">All</option>
+      <?php 
+        foreach($categoriesItem as $category) {?>
+          <option value="<?php echo $category['category_id']?>"><?php echo $category['category_name']?></option>
+      <?php } ?>
+    </select>
+  </div>
+  <h4 class="grey-text text-darken-4">Price Range</h4> 
+  <!-- for price range -->
+  <input type="number" name="min_price" value="0" id="">
+  <input type="number" name="max_price" value="4000000" id="">
+  <!-- price range end -->
+  <input type="submit" value="search">
+<!-- to here -->
                                       
   </div>
   <div class="modal-footer">
@@ -79,17 +77,14 @@
         
                                     <!-- advance search end -->
 
-                                                                      <div class="input-field " id="searchbar">
-                                  
-                                        <input class="white-text transparent" id="search" name="searchKeyword" autocomplete="off" type="search" placeholder="Search" value="">
-                                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                                    </div>
-                                    
- 
-                                </form>
-                            </div>
-                        </nav>
-                    </li>
+    <div class="input-field " id="searchbar">
+      <input class="white-text transparent" id="search" name="searchKeyword" autocomplete="off" type="search" placeholder="Search" value="">
+      <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+    </div>
+    </form>
+    </div>
+  </nav>
+</li>
                     <?php
                         if(!empty($_SESSION['logged_user']) || !empty($_SESSION['logged_vendor']))
                         {

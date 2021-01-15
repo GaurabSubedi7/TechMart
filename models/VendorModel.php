@@ -117,5 +117,18 @@
             $st->bindParam(':vendor_id',$_SESSION['vendor_id']);
             $st->execute();
         }
+
+        public static function uploadProduct($data, $filename){
+            $Istmt = self::$pdo->prepare("INSERT INTO products (product_name,product_price,product_quantity,product_description,product_image,category_id,vendor_id) VALUES(:product_name,:product_price,:product_quantity,:product_description,:product_image,:category_id,:vendor_id)");
+           $Istmt->bindParam(":product_name",$data['product_name']);
+           $Istmt->bindParam(":product_price",$data['product_price']);
+           $Istmt->bindParam(":product_quantity",$data['product_quantity']);
+           $Istmt->bindParam(":product_description",$data['product_description']);
+           $Istmt->bindParam(":product_image",$filename);
+           $Istmt->bindParam(":category_id",$data['categories']);
+           $Istmt->bindParam(":vendor_id",$data['vendor_id']);
+         
+           $Istmt->execute();
+        }
     }   
 ?>
