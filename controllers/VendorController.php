@@ -33,9 +33,11 @@
 
         public static function showUpdatePage($route){
             $vendor_id = VendorModel::GetId();
-            $data = ['vendor_id'=>$vendor_id];
+            $_SESSION['vendor_id'] = $vendor_id['vendor_id'];
             $categoriesItem = VendorModel::GetCategories();
             $categoriesData = ['categoriesItem'=>$categoriesItem];
+            $products = VendorModel::listVendorProducts();
+            $data = ['products'=>$products];
             self::createView($route ,$data, $categoriesData);
         }
 
@@ -107,6 +109,7 @@
                             $uploadOk = 1;
                             VendorModel::uploadProduct($data, $pic);
                             VendorModel::addDescription($data);
+                            header("Location: http://localhost/project5/TechMart/vendor/updateProduct", TRUE, 301);
                         }else{echo "notsuccess";}
                     } else {
                         echo "File is not an image.";
@@ -158,6 +161,17 @@
                    header("Location: http://localhost/project5/TechMart/vendorProfile", TRUE, 301);
                }
             }
+        }
+
+        public static function removeProduct($data, $route){
+            if(isset($data['action'])){
+                if($data['action']=='delete' && !empty($data['id']) && !empty($_SESSION['logged_vendor']))
+                {
+                    print_r($data);
+                    VendorModel::removeMyProduct($data['id']);
+                    header("Location: http://localhost/project5/TechMart/vendor/updateProduct", TRUE, 301);
+                }
+              }
         }
     }
 ?>

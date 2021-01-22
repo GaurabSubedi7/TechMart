@@ -165,7 +165,7 @@
                 
                 case 3:
                     //monitor
-                    $stmt = self::$pdo->prepare("insert into descriptions (product_id,screen_size,refresh_rate,resolution,touchscreen,others) values(:pid,:screen_size,:refresh_rate,:resolution,:toucscreen,:others)");
+                    $stmt = self::$pdo->prepare("insert into descriptions (product_id,screen_size,refresh_rate,resolution,touchscreen,others) values(:pid,:screen_size,:refresh_rate,:resolution,:touchscreen,:others)");
                     $stmt->bindParam(":pid",$product_id);
                     $stmt->bindParam(":others",$data['other']);
                     $stmt->bindParam(":screen_size",$data['screen_size']);                    
@@ -189,6 +189,25 @@
             
             $Categoriesdata = $st->fetchall();
             return $Categoriesdata;
+        }
+
+        public static function listVendorProducts(){
+            $st = self::$pdo->prepare("select * from products p INNER JOIN descriptions d ON p.product_id = d.product_id where p.vendor_id = :vendor_id");
+            $st->bindParam(':vendor_id',$_SESSION['vendor_id']);
+            $st->execute();
+            $products = $st->fetchall();
+            return $products;
+        }
+
+        public static function removeMyProduct($product_id){
+            // remove description first
+            $removeDes = self::$pdo->prepare("delete from descriptions where product_id = :pid");
+            $removeDes->bindParam(":pid",$product_id);
+            $removeDes->execute();
+            // now turn for product
+            $removeProduct = self::$pdo->prepare("delete from products where product_id = :product_id");
+            $removeProduct->bindParam(":product_id",$product_id);
+            $removeProduct->execute();
         }
     }   
 ?>

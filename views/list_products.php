@@ -172,7 +172,7 @@
                           <p id="screen_size_id">Screen Size : <?php echo $filteredproduct['screen_size']; ?></p>
                         <p id="refresh_rate_id">Refresh Rate : <?php echo $filteredproduct['refresh_rate']; ?></p>
                         <p id="resolution_id">Resolution : <?php echo $filteredproduct['resolution']; ?></p>
-                        <p id="touchscreen_id">Touch Screen : <?php echo ($filteredproduct['touchscreen']==1)?"Yes":"No"; ?></p>
+                        <p id="touchscreen_id">Touch Screen : <?php echo ($filteredproduct['touchscreen']==1)?"Yes":"No"; ?></p><br><br><br>
                           <!-- remaining others -->
                         <?php }else{ ?>
                           <p><?php echo $filteredproduct['others']; ?></p>
@@ -249,7 +249,7 @@
                           <p id="screen_size_id">Screen Size : <?php echo $product['screen_size']; ?></p>
                         <p id="refresh_rate_id">Refresh Rate : <?php echo $product['refresh_rate']; ?></p>
                         <p id="resolution_id">Resolution : <?php echo $product['resolution']; ?></p>
-                        <p id="touchscreen_id">Touch Screen : <?php echo ($product['touchscreen']==1)?"Yes":"No"; ?></p>
+                        <p id="touchscreen_id">Touch Screen : <?php echo ($product['touchscreen']==1)?"Yes":"No"; ?></p><br><br><br>
                           <!-- remaining others -->
                         <?php }else{ ?>
                           <p><?php echo $product['others']; ?></p>
