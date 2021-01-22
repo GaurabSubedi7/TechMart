@@ -58,12 +58,12 @@
                       </div>
                       <div class="card-content">
                         <span class="activator grey-text text-darken-4" id="activator"><i class="material-icons right">more_vert</i><h6><?php echo $product['product_name']; ?></h6></span>
-                        <p><a class="orange-text" href=""><b>Rs. <?php echo intval($product['product_price']); ?></b></a></p> <br>
+                        <p><a class="orange-text" href=""><b>Rs. <?php echo intval($product['product_price']); ?></b><a class="red-text text-lighten-2 right" href=""><b>Left: <?php echo intval($product['product_quantity']); ?></a></p> <br>
                       </div>
                           <div class="card-action">
                             <?php
                               if(!empty($_SESSION['logged_vendor'])){
-                            ?>
+                            ?>  
                               <a href="#editWindow" class="btn modal-trigger" onclick="edit(<?php echo $product['product_id']; ?>,'<?php echo $product['product_name']; ?>',<?php echo intval($product['product_price']); ?>,<?php echo $product['product_quantity']; ?>)"><i class="material-icons left">edit</i><b>Edit</b></a>
                               <button class="btn orange darken-4" name="deletebtn" onclick="submitForm('delete',<?php echo $product['product_id']; ?>)"><i class="material-icons">delete</i></button>
                             <?php }?>
@@ -112,7 +112,7 @@
             }?>
             </form>
             <!-- edit window -->
-            <form action="" method="post" id="editForm">
+            <form action="" method="post" id="editForm" enctype="multipart/form-data">
             <div id="editWindow" class="modal modal-fixed-footer">
                       <div class="modal-content">
                           <h4 style="padding-bottom:1vw;">Edit Product</h4>
@@ -135,13 +135,13 @@
                                   <input name="product_image" type="file">
                               </div>
                               <div class="file-path-wrapper">
-                                  <input class="file-path validate white-text" type="text" placeholder="Select Image">
+                                  <input class="file-path validate" type="text" placeholder="Select Image">
                               </div>
                               <span class="red-text text-accent-4" id="username_msg"></span>
                           </div>
                       </div>
                       <div class="modal-footer">
-                      <input type="submit" href="#!" class="white-text orange darken-3 modal-close waves-effect waves-dark btn" name="updatebtn" value="Update" onclick="submitForm2('update',<?php echo $product['product_id']; ?>)">
+                      <input type="submit" href="#!" class="white-text orange darken-3 modal-close waves-effect waves-dark btn" name="updatebtn" value="Update">
                       </div>
                   </div>
                             <!-- edit ends here -->
@@ -154,12 +154,6 @@
 
             function submitForm(action, id){
                 var form = document.getElementById('thisform');
-                form.action = "?action=" + action + "&id=" + id;
-                form.submit();
-            }
-
-            function submitForm2(action, id){
-                var form = document.getElementById('editForm');
                 form.action = "?action=" + action + "&id=" + id;
                 form.submit();
             }

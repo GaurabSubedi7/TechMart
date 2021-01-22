@@ -163,7 +163,7 @@
             }
         }
 
-        public static function removeProduct($data, $route){
+        public static function removeProduct($data, $btnName){
             if(isset($data['action'])){
                 if($data['action']=='delete' && !empty($data['id']) && !empty($_SESSION['logged_vendor']))
                 {
@@ -173,14 +173,30 @@
               }
         }
 
-        public static function updateProduct($data, $route){
-            if(isset($data['action'])){
-                if($data['action']=='update' && !empty($data['id']) && !empty($_SESSION['logged_vendor']))
-                {
-                    VendorModel::updateMyProduct($data['id']);
-                    header("Location: http://localhost/project5/TechMart/vendor/updateProduct", TRUE, 301);
+        public static function updateProduct($data, $btnName){
+            if(isset($data[$btnName])){
+                $target_dir = "/xampp/htdocs/project5/TechMart/views/public/img/";
+                $file_name = $_FILES['product_image']['name'];
+                $pic = VendorController::random_string(10).$file_name;
+                $target_file = $target_dir . basename($_FILES["product_image"]["name"]);
+                $uploadOk = 1;
+                $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+                // Check if image file is a actual image or fake image
+                if(isset($data[$btnName])) {
+                    $check = getimagesize($_FILES["product_image"]["tmp_name"]);
+                    if($check !== false) {
+                        if(move_uploaded_file($_FILES['product_image']['tmp_name'],$target_dir.$pic)){
+                            $uploadOk = 1;
+                            VendorModel::updateMyProduct($data, $pic);
+                            header("Location: http://localhost/project5/TechMart/vendor/updateProduct", TRUE, 301);
+                        }else{echo "notsuccess";}
+                    } else {
+                        echo "File is not an image.";
+                        $uploadOk = 0;
+                    }
                 }
-              }
+
+            }
         }
     }
 ?>
