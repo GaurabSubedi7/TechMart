@@ -148,7 +148,35 @@
                           </div>
                       <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i><?php echo $filteredproduct['product_name']; ?></span>
-                        <p><?php echo $filteredproduct['product_description']; ?> </p>
+                        <!-- laptop -->
+                        <?php if($filteredproduct['category_id']==1){ ?>
+                        <p><?php echo $filteredproduct['others']; ?></p>
+                        <p id="ram_size_id">Ram : <?php echo $filteredproduct['ram']; ?></p>
+                        <p id="screen_size_id">Screen Size : <?php echo $filteredproduct['screen_size']; ?></p>
+                        <p id="refresh_rate_id">Refresh Rate : <?php echo $filteredproduct['refresh_rate']; ?></p>
+                        <p id="resolution_id">Resolution : <?php echo $filteredproduct['resolution']; ?></p>
+                        <p id="storage_id">Storage : <?php echo $filteredproduct['storage']; ?></p>
+                        <p id="gpu_id">GPU : <?php echo $filteredproduct['gpu']; ?></p>
+                        <p id="cpu_id">CPU : <?php echo $filteredproduct['cpu']; ?></p>
+                        <p id="battery_power_id">Battery Power : <?php echo $filteredproduct['battery_power']; ?></p>
+                        <p id="touchscreen_id">Touch Screen : <?php echo ($filteredproduct['touchscreen']==1)?"true":"false"; ?></p>
+                          <!-- mouse -->
+                        <?php }else if($filteredproduct['category_id']==2){ ?>
+                          <p><?php echo $filteredproduct['others']; ?></p>
+                          <p id="dpi_id">DPI : <?php echo $filteredproduct['dpi']; ?></p>
+                        <p id="programmable_button_id">Programmable Buttons : <?php echo $filteredproduct['programmable_buttons']; ?></p>
+                        <p id="wireless_id">Wireless : <?php echo ($filteredproduct['wireless']==1)?"true":"false"; ?></p>
+                          <!-- monitor -->
+                        <?php }else if($filteredproduct['category_id']==3){ ?>
+                          <p><?php echo $filteredproduct['others']; ?></p>
+                          <p id="screen_size_id">Screen Size : <?php echo $filteredproduct['screen_size']; ?></p>
+                        <p id="refresh_rate_id">Refresh Rate : <?php echo $filteredproduct['refresh_rate']; ?></p>
+                        <p id="resolution_id">Resolution : <?php echo $filteredproduct['resolution']; ?></p>
+                        <p id="touchscreen_id">Touch Screen : <?php echo ($filteredproduct['touchscreen']==1)?"true":"false"; ?></p>
+                          <!-- remaining others -->
+                        <?php }else{ ?>
+                          <p><?php echo $filteredproduct['others']; ?></p>
+                        <?php } ?>
                       </div>
                     </div>
                   </div>            
@@ -197,7 +225,8 @@
                           </div>
                       <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i><?php echo $product['product_name']; ?></span>
-                        
+                        <!-- laptop -->
+                        <?php if($product['category_id']==1){ ?>
                         <p><?php echo $product['others']; ?></p>
                         <p id="ram_size_id">Ram : <?php echo $product['ram']; ?></p>
                         <p id="screen_size_id">Screen Size : <?php echo $product['screen_size']; ?></p>
@@ -207,10 +236,24 @@
                         <p id="gpu_id">GPU : <?php echo $product['gpu']; ?></p>
                         <p id="cpu_id">CPU : <?php echo $product['cpu']; ?></p>
                         <p id="battery_power_id">Battery Power : <?php echo $product['battery_power']; ?></p>
-                        <p id="touchscreen_id">Touch Screen : <?php echo $product['touchscreen']; ?></p>
-                        <p id="dpi_id">DPI : <?php echo $product['dpi']; ?></p>
+                        <p id="touchscreen_id">Touch Screen : <?php echo ($product['touchscreen']==1)?"true":"false"; ?></p>
+                          <!-- mouse -->
+                        <?php }else if($product['category_id']==2){ ?>
+                          <p><?php echo $product['others']; ?></p>
+                          <p id="dpi_id">DPI : <?php echo $product['dpi']; ?></p>
                         <p id="programmable_button_id">Programmable Buttons : <?php echo $product['programmable_buttons']; ?></p>
-                        <p id="wireless_id">Wireless : <?php echo $product['wireless']; ?></p>
+                        <p id="wireless_id">Wireless : <?php echo ($product['wireless']==1)?"true":"false"; ?></p>
+                          <!-- monitor -->
+                        <?php }else if($product['category_id']==3){ ?>
+                          <p><?php echo $product['others']; ?></p>
+                          <p id="screen_size_id">Screen Size : <?php echo $product['screen_size']; ?></p>
+                        <p id="refresh_rate_id">Refresh Rate : <?php echo $product['refresh_rate']; ?></p>
+                        <p id="resolution_id">Resolution : <?php echo $product['resolution']; ?></p>
+                        <p id="touchscreen_id">Touch Screen : <?php echo ($product['touchscreen']==1)?"true":"false"; ?></p>
+                          <!-- remaining others -->
+                        <?php }else{ ?>
+                          <p><?php echo $product['others']; ?></p>
+                        <?php } ?>
                       </div>
                     </div>
                   </div>            
@@ -249,11 +292,11 @@
               $('.modal').modal();
             });
             //for description            
-            $('.activator').on('click',function(){
-              var category_id = document.getElementById('category_id').value;
+            // $('.activator').on('click',function(){
+              // var category_id = document.getElementById('category_id').value;
               // alert(document.getElementById('activator').value);
               // alert(category_id);
-              alert(category_id);
+              // alert(document.getElementById('category_id').value);
               // if(category_id == 1){
               //     $("#ram_size_id").show();
               //     $("#screen_size_id").show();
@@ -309,7 +352,7 @@
               //     $("#programmable_button_id").hide();
               //     $("#wireless_id").hide();
               // }
-          });
+          // });
         </script>
     </body>
 </html>

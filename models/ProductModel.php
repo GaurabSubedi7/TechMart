@@ -80,10 +80,10 @@
                 $_SESSION['user_id']=$userId['user_id'];
                 if($categoryId == "0")
                 {
-                    $st = self::$pdo->prepare("select * from products where product_price >='$minPrice' AND product_price <= '$maxPrice' AND product_id != ALL(select product_id from carts where user_id = :user_id) AND product_name like '%$searchQuery%'");
+                    $st = self::$pdo->prepare("select * from products p inner join descriptions d on p.product_id = d.product_id where p.product_price >='$minPrice' AND p.product_price <= '$maxPrice' AND p.product_id != ALL(select product_id from carts where user_id = :user_id) AND product_name like '%$searchQuery%'");
                 }
                 else{
-                    $st = self::$pdo->prepare("select * from products where category_id = '$categoryId' AND product_price >='$minPrice' AND product_price <= '$maxPrice' AND product_id != ALL(select product_id from carts where user_id = :user_id) AND product_name like '%$searchQuery%'");
+                    $st = self::$pdo->prepare("select * from products p inner join descriptions d on p.product_id = d.product_id where p.category_id = '$categoryId' AND p.product_price >='$minPrice' AND p.product_price <= '$maxPrice' AND p.product_id != ALL(select product_id from carts where user_id = :user_id) AND product_name like '%$searchQuery%'");
                 }
                 $st->bindParam(':user_id',$_SESSION['user_id']);
                 // $st->bindParam(':searchQuery',$searchQuery);
@@ -95,11 +95,11 @@
             else{
                if($categoryId == "0")
                {
-                $st = self::$pdo->prepare("select * from products where product_price >='$minPrice' AND product_price <= '$maxPrice' AND product_name like '%$searchQuery%'");
+                $st = self::$pdo->prepare("select * from products p inner join descriptions d on p.product_id = d.product_id where p.product_price >='$minPrice' AND p.product_price <= '$maxPrice' AND p.product_name like '%$searchQuery%'");
                }
                else
                {
-                $st = self::$pdo->prepare("select * from products where category_id = '$categoryId' AND product_price >='$minPrice' AND product_price <= '$maxPrice' AND product_name like '%$searchQuery%'");
+                $st = self::$pdo->prepare("select * from products p inner join descriptions d on p.product_id = d.product_id where p.category_id = '$categoryId' AND p.product_price >='$minPrice' AND p.product_price <= '$maxPrice' AND p.product_name like '%$searchQuery%'");
                }
                 // $st->bindParam(':searchQuery',$searchQuery);
                 $st->execute();
