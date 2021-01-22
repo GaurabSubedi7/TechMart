@@ -62,11 +62,23 @@
 
         public static function updateItem($id, $qty)
         {
-            $removeStatement = self::$pdo->prepare("update carts set item_quantity = :qty where product_id = :pid AND user_id = :userId");
-            $removeStatement->bindParam(':userId',$_SESSION['user_id']);
-            $removeStatement->bindParam(':pid',$id);
-            $removeStatement->bindParam(':qty',$qty);
-            $removeStatement->execute();
+            $st = self::$pdo->prepare("select product_quantity from products where product_id = :id");
+            $st->bindParam(':id',$id);
+            $st->execute();
+            $quantityData = $st->fetchall();
+            $quantity = $quantityData[0]['product_quantity'];
+            if($qty<=$quantity && $qty>0){
+                $removeStatement = self::$pdo->prepare("update carts set item_quantity = :qty where product_id = :pid AND user_id = :userId");
+                $removeStatement->bindParam(':userId',$_SESSION['user_id']);
+                $removeStatement->bindParam(':pid',$id);
+                $removeStatement->bindParam(':qty',$qty);
+                $removeStatement->execute();
+                // $newQty = $quantity - $qty;
+                // $stmt = self::$pdo->prepare("update products set product_quantity = :newqty where product_id = :productId");
+                // $stmt->bindParam(":newqty",$newQty);
+                // $stmt->bindParam(":productId",$id);
+                // $stmt->execute();
+            }
         }
         
         public static function searchProducts($searchQuery,$categoryId ,$maxPrice, $minPrice){

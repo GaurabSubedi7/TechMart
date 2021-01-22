@@ -211,13 +211,22 @@
         }
 
         public static function updateMyProduct($data, $filename){
-            $st = self::$pdo->prepare("update products set product_name =:name,product_price =:price,product_quantity =:qty, product_image = :img where product_id =:pid");
-            $st->bindParam(':name',$data['product_name']);
-            $st->bindParam(':price',$data['product_price']);
-            $st->bindParam(':qty',$data['product_quantity']);
-            $st->bindParam(':img',$filename);
-            $st->bindParam(':pid',$data['product_id']);
-            $st->execute();
+            if($filename != NULL){
+                $st = self::$pdo->prepare("update products set product_name =:name,product_price =:price,product_quantity =:qty, product_image = :img where product_id =:pid");
+                $st->bindParam(':name',$data['product_name']);
+                $st->bindParam(':price',$data['product_price']);
+                $st->bindParam(':qty',$data['product_quantity']);
+                $st->bindParam(':img',$filename);
+                $st->bindParam(':pid',$data['product_id']);
+                $st->execute();
+            }else{
+                $st = self::$pdo->prepare("update products set product_name =:name,product_price =:price,product_quantity =:qty where product_id =:pid");
+                $st->bindParam(':name',$data['product_name']);
+                $st->bindParam(':price',$data['product_price']);
+                $st->bindParam(':qty',$data['product_quantity']);
+                $st->bindParam(':pid',$data['product_id']);
+                $st->execute();
+            }
         }
     }   
 ?>
