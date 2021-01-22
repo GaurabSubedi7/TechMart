@@ -159,20 +159,20 @@
                         <p id="gpu_id">GPU : <?php echo $filteredproduct['gpu']; ?></p>
                         <p id="cpu_id">CPU : <?php echo $filteredproduct['cpu']; ?></p>
                         <p id="battery_power_id">Battery Power : <?php echo $filteredproduct['battery_power']; ?></p>
-                        <p id="touchscreen_id">Touch Screen : <?php echo ($filteredproduct['touchscreen']==1)?"true":"false"; ?></p>
+                        <p id="touchscreen_id">Touch Screen : <?php echo ($filteredproduct['touchscreen']==1)?"Yes":"No"; ?></p>
                           <!-- mouse -->
                         <?php }else if($filteredproduct['category_id']==2){ ?>
                           <p><?php echo $filteredproduct['others']; ?></p>
                           <p id="dpi_id">DPI : <?php echo $filteredproduct['dpi']; ?></p>
                         <p id="programmable_button_id">Programmable Buttons : <?php echo $filteredproduct['programmable_buttons']; ?></p>
-                        <p id="wireless_id">Wireless : <?php echo ($filteredproduct['wireless']==1)?"true":"false"; ?></p>
+                        <p id="wireless_id">Wireless : <?php echo ($filteredproduct['wireless']==1)?"Yes":"No"; ?></p>
                           <!-- monitor -->
                         <?php }else if($filteredproduct['category_id']==3){ ?>
                           <p><?php echo $filteredproduct['others']; ?></p>
                           <p id="screen_size_id">Screen Size : <?php echo $filteredproduct['screen_size']; ?></p>
                         <p id="refresh_rate_id">Refresh Rate : <?php echo $filteredproduct['refresh_rate']; ?></p>
                         <p id="resolution_id">Resolution : <?php echo $filteredproduct['resolution']; ?></p>
-                        <p id="touchscreen_id">Touch Screen : <?php echo ($filteredproduct['touchscreen']==1)?"true":"false"; ?></p>
+                        <p id="touchscreen_id">Touch Screen : <?php echo ($filteredproduct['touchscreen']==1)?"Yes":"No"; ?></p>
                           <!-- remaining others -->
                         <?php }else{ ?>
                           <p><?php echo $filteredproduct['others']; ?></p>
@@ -236,20 +236,20 @@
                         <p id="gpu_id">GPU : <?php echo $product['gpu']; ?></p>
                         <p id="cpu_id">CPU : <?php echo $product['cpu']; ?></p>
                         <p id="battery_power_id">Battery Power : <?php echo $product['battery_power']; ?></p>
-                        <p id="touchscreen_id">Touch Screen : <?php echo ($product['touchscreen']==1)?"true":"false"; ?></p>
+                        <p id="touchscreen_id">Touch Screen : <?php echo ($product['touchscreen']==1)?"Yes":"No"; ?></p>
                           <!-- mouse -->
                         <?php }else if($product['category_id']==2){ ?>
                           <p><?php echo $product['others']; ?></p>
                           <p id="dpi_id">DPI : <?php echo $product['dpi']; ?></p>
                         <p id="programmable_button_id">Programmable Buttons : <?php echo $product['programmable_buttons']; ?></p>
-                        <p id="wireless_id">Wireless : <?php echo ($product['wireless']==1)?"true":"false"; ?></p>
+                        <p id="wireless_id">Wireless : <?php echo ($product['wireless']==1)?"Yes":"No"; ?></p>
                           <!-- monitor -->
                         <?php }else if($product['category_id']==3){ ?>
                           <p><?php echo $product['others']; ?></p>
                           <p id="screen_size_id">Screen Size : <?php echo $product['screen_size']; ?></p>
                         <p id="refresh_rate_id">Refresh Rate : <?php echo $product['refresh_rate']; ?></p>
                         <p id="resolution_id">Resolution : <?php echo $product['resolution']; ?></p>
-                        <p id="touchscreen_id">Touch Screen : <?php echo ($product['touchscreen']==1)?"true":"false"; ?></p>
+                        <p id="touchscreen_id">Touch Screen : <?php echo ($product['touchscreen']==1)?"Yes":"No"; ?></p>
                           <!-- remaining others -->
                         <?php }else{ ?>
                           <p><?php echo $product['others']; ?></p>
