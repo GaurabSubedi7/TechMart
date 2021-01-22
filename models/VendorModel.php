@@ -209,5 +209,9 @@
             $removeProduct->bindParam(":product_id",$product_id);
             $removeProduct->execute();
         }
+
+        public static function updateMyProduct($product_id){
+            //yet to do
+        }
     }   
 ?>

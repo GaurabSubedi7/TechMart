@@ -167,8 +167,17 @@
             if(isset($data['action'])){
                 if($data['action']=='delete' && !empty($data['id']) && !empty($_SESSION['logged_vendor']))
                 {
-                    print_r($data);
                     VendorModel::removeMyProduct($data['id']);
+                    header("Location: http://localhost/project5/TechMart/vendor/updateProduct", TRUE, 301);
+                }
+              }
+        }
+
+        public static function updateProduct($data, $route){
+            if(isset($data['action'])){
+                if($data['action']=='update' && !empty($data['id']) && !empty($_SESSION['logged_vendor']))
+                {
+                    VendorModel::updateMyProduct($data['id']);
                     header("Location: http://localhost/project5/TechMart/vendor/updateProduct", TRUE, 301);
                 }
               }
