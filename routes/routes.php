@@ -20,7 +20,15 @@
     Route::set('userProfile');
     Route::set('vendorProfile');
     Route::set('vendor/updateProduct');
-    
+    Route::set('list_products/compare');
+
+    //compare 
+    Route::get('list_products/compare', function(){
+        ComparisionController::compareView('compare');
+    });
+    Route::post('list_products/compare', function(){
+        ComparisionController::compareData($_POST,'compareNow');
+    });
     Route::get('index.php', function(){
         IndexController::createView('home');
     });

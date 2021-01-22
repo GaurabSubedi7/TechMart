@@ -117,6 +117,30 @@
             </div>
         </nav>
 
+       <?php
+       
+       if(isset($_POST["Submit1"]))
+       {
+        $_SESSION['category_id'] = $_POST['cat'];
+        header("Location: http://localhost/project5/TechMart/list_products/compare", TRUE, 301);
+       }
+       
+       ?>
+  <div class = "container">
+<form method="post">
+<select name = "cat">
+            <option value = "1" >Laptop</option>
+            <option value = "2" >Mouse</option>
+            <option value = "3" >Monitor</option>     
+         </select>
+
+   <input type="submit" name="Submit1"value="okay">
+   </form>
+   </div>
+
+   
+  
+
                               <!-- product list -->
                               <?php 
           if(isset($_GET['searchKeyword'])){
@@ -290,6 +314,9 @@
             //for modal
             $(document).ready(function(){
               $('.modal').modal();
+            });
+            $(document).ready(function(){
+              $('.modal1').modal();
             });
             //for description            
             // $('.activator').on('click',function(){
