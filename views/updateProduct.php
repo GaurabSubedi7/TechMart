@@ -141,7 +141,7 @@
                           </div>
                       </div>
                       <div class="modal-footer">
-                      <input type="submit" href="#!" class="white-text orange darken-3 modal-close waves-effect waves-dark btn" name="updatebtn" value="Update" onclick="submitForm('update',<?php echo $item['product_id']; ?>)">
+                      <input type="submit" href="#!" class="white-text orange darken-3 modal-close waves-effect waves-dark btn" name="updatebtn" value="Update" onclick="submitForm('update',<?php echo $product['product_id']; ?>)">
                       </div>
                   </div>
                             <!-- edit ends here -->
