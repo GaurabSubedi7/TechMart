@@ -26,7 +26,15 @@
         {
             $vendor_id = VendorModel::GetId();
             $data = ['vendor_id'=>$vendor_id];
-            $categoriesItem = ProductModel::GetCategories();
+            $categoriesItem = VendorModel::GetCategories();
+            $categoriesData = ['categoriesItem'=>$categoriesItem];
+            self::createView($route ,$data, $categoriesData);
+        }
+
+        public static function showUpdatePage($route){
+            $vendor_id = VendorModel::GetId();
+            $data = ['vendor_id'=>$vendor_id];
+            $categoriesItem = VendorModel::GetCategories();
             $categoriesData = ['categoriesItem'=>$categoriesItem];
             self::createView($route ,$data, $categoriesData);
         }
@@ -66,6 +74,10 @@
                     $stat = VendorModel::addVendor($post);
                     $_SESSION['logged_vendor'] = $post['vendor_name'];
                     VendorModel::addVendorAvatar($post);
+                    $avatar = VendorModel::getVendorAvatar();
+                    $avatarData = ['avatars'=>$avatar];
+                    extract($avatarData);
+                    $_SESSION['vendor_avatar'] = $avatars[0]['avatar_image'];
                     header("Location: http://localhost/project5/TechMart/", TRUE, 301);
                     ob_enf_flush();
                 }
@@ -94,12 +106,14 @@
                         if(move_uploaded_file($_FILES['product_image']['tmp_name'],$target_dir.$pic)){
                             $uploadOk = 1;
                             VendorModel::uploadProduct($data, $pic);
+                            VendorModel::addDescription($data);
                         }else{echo "notsuccess";}
                     } else {
                         echo "File is not an image.";
                         $uploadOk = 0;
                     }
                 }
+
             }
         }
 

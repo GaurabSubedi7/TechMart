@@ -42,11 +42,6 @@
             } 
         }
 
-        public static function showProduct($route)
-        {
-            self::createView($route);
-        }
-
         public static function RemoveCartItem($data, $route)
         {
           if(isset($data['action'])){

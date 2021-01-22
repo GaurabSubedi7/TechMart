@@ -59,6 +59,10 @@
                     $stat = UserModel::addUser($post);
                     $_SESSION['logged_user'] = $post['username'];
                     Usermodel::addAvatar($post);
+                    $avatar = UserModel::getUserAvatar();
+                    $avatarData = ['avatars'=>$avatar];
+                    extract($avatarData);
+                    $_SESSION['user_avatar'] = $avatars[0]['avatar_image'];
                     header("Location: http://localhost/project5/TechMart/", TRUE, 301);
                     ob_enf_flush();
                 }

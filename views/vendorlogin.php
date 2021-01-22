@@ -17,7 +17,7 @@
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <title>userlogin</title>
+    <title>vendorlogin</title>
 </head>
 <body class="loginpage">
     <div class="container">
@@ -32,7 +32,7 @@
                         <div class="input-field">
                             <i class="fa fa-user prefix"></i>
                             <input type="text" name="vendor_name" id="username" autocomptete="off">
-                            <label for="username">Username</label>
+                            <label for="username">Vendor Name</label>
                         </div>
                         <div class="input-field">
                             <i class="fa fa-key prefix"></i>

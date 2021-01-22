@@ -12,7 +12,7 @@
                 $st_uid->execute();
                 $userId = $st_uid->fetch();  
                 $_SESSION['user_id']=$userId['user_id'];
-                $st = self::$pdo->prepare(" select * from products where product_id != ALL(select product_id from carts where user_id =  :user_id)");
+                $st = self::$pdo->prepare("select * from products p INNER JOIN descriptions d ON p.product_id = d.product_id where p.product_id != ALL(select product_id from carts where user_id = :user_id)");
                 $st->bindParam(':user_id',$_SESSION['user_id']);
                 $st->execute();
                 $products = $st->fetchall();
@@ -20,7 +20,7 @@
             
             }
             else{
-                   $st = self::$pdo->prepare("select * from products INNER JOIN vendors ON products.vendor_id = vendors.vendor_id");
+                   $st = self::$pdo->prepare("select * from ((products INNER JOIN vendors ON products.vendor_id = vendors.vendor_id) inner join descriptions d on products.product_id = d.product_id)");
             $st->execute();
             $products = $st->fetchall();
             return $products;
@@ -110,7 +110,7 @@
 
         public static function GetCategories()
         {
-            $st = self::$pdo->prepare("select * from categories ORDER BY category_name");
+            $st = self::$pdo->prepare("select distinct c.* from categories c inner join products p on c.category_id = p.category_id");
             $st->execute();
             
             $Categoriesdata = $st->fetchall();

@@ -10,19 +10,20 @@
             .search-icon{
                 width: 200px;
             }
+
             .modal{ 
               max-width: 300px;
-               }
+            }
 
-               #search {
-                margin-top: -60px;
-                margin-left: -300px;
-                }
+            #search {
+            margin-top: -60px;
+            margin-left: -300px;
+            }
         </style>
     </head>
     <body>
     <!-- navbar for the market -->
-        <nav class="nav-wrapper grey darken-4">
+        <nav class="nav-wrapper bla grey darken-4">
             <!-- logo -->
             <a href="/project5/TechMart" class="brand-logo hide-on-med-and-down"><img src="./views/public/img/logo-techmart.png" alt="logo" class="responsive-img logo"></a>
             <div class="container">         
@@ -45,7 +46,7 @@
 
               
   <!-- Modal Trigger -->
-  <a class="waves-effect waves-light btn-flat modal-trigger grey darken-4 hide-on-med-and-down" href="#modal1"><i class="large material-icons white-text  ">filter_list</i>Filters</a>
+  <a class="waves-effect waves-light btn-flat modal-trigger grey darken-4" href="#modal1"><i class="large material-icons white-text  ">filter_list</i>Filters</a>
 
 <!-- Modal Structure -->
 <div id="modal1" class="modal">
@@ -86,7 +87,7 @@
   </nav>
 </li>
                     <?php
-                        if(!empty($_SESSION['logged_user']) || !empty($_SESSION['logged_vendor']))
+                        if(!empty($_SESSION['logged_user']))
                         {
                           $cartCount = 0;
                             foreach($cartItem as $item)
@@ -94,14 +95,21 @@
                                 $cartCount += 1; }
                           ?>
                             <li>
-                                <a href="list_products/cart" class="z-depth-0 transparent wave-effect waves-light btn"><i class="material-icons">shopping_cart</i></a>
+                                <a href="list_products/cart" class="z-depth-0 transparent wave-effect waves-light btn hide-on-med-and-down"><i class="material-icons">shopping_cart</i></a>
                             </li>
                               <li><input type="button" class="circle orange-text text-lighten-1 new grey darken-3" value="<?php echo $cartCount; ?>" style="border:none;margin-left:-35px;"></li>
+
+                            <?php } elseif(!empty($_SESSION['logged_vendor'])){ ?>
+                              <li>
+                                <a href="list_products/cart" class="z-depth-0 transparent wave-effect waves-light btn hide-on-med-and-down"><i class="fas fa-bell"></i></a>
+                            </li>
+                              <li><input type="button" class="circle orange-text text-lighten-1 new grey darken-3" value="1" style="border:none;margin-left:-35px;"></li>
+
                     <?php }else{ ?>
-                            <li class="hide-on-small-only">
+                            <li class="hide-on-med-and-down">
                               <a href="http://localhost/project5/TechMart/userlogin" class="btn orange" type="submit">Login</a>
                             </li>
-                            <li class="hide-on-small-only">
+                            <li class="hide-on-med-and-down">
                               <a href="http://localhost/project5/TechMart/usersignup" class="btn transparent z-depth-0" type="submit">SignUp</a>
                             </li>
                     <?php } ?>
@@ -109,8 +117,8 @@
             </div>
         </nav>
 
-
-        <?php 
+                              <!-- product list -->
+                              <?php 
           if(isset($_GET['searchKeyword'])){
             if(!empty($filteredProducts)){ ?>
               <div class="container">
@@ -156,6 +164,7 @@
             }
             ?>
         <?php }else{
+          if(!empty($products)){
         ?>
         <div class="container">
           <div class="row">
@@ -165,10 +174,12 @@
                   <div class="col s12 m6 l4">
                     <div class="card medium sticky-action">
                       <div class="card-image waves-effect waves-block waves-light">
+                      <!-- hiddentype -->
+                      <input type="hidden" name="test" id="category_id" value="<?php echo $product['category_id'];?>">
                         <img class="activator" src="./views/public/img/<?php echo $product['product_image'];?>" style="height:230px;width:300px;">
                       </div>
                       <div class="card-content">
-                        <span class="activator grey-text text-darken-4"><i class="material-icons right">more_vert</i><h6><?php echo $product['product_name']; ?></h6></span>
+                        <span class="activator grey-text text-darken-4" id="activator"><i class="material-icons right">more_vert</i><h6><?php echo $product['product_name']; ?></h6></span>
                         <p><a class="orange-text" href=""><b>Rs. <?php echo intval($product['product_price']); ?></b></a></p> <br>
                       </div>
                           <div class="card-action">
@@ -176,26 +187,47 @@
                               if(empty($_SESSION['logged_user'])){
                             ?>
                               <a href="http://localhost/project5/TechMart/userlogin" class="btn" type="submit">Add To Cart</a>
+                              <button class="btn orange darken-4" onclick="M.toast({html: 'Added to your compare'})"><i class="material-icons">compare_arrows</i></button>
                             <?php
                               }else{
                             ?>
                               <button class="btn" onclick="M.toast({html: 'Added to your cart'})">Add To Cart</button>
+                              <button class="btn orange darken-4" onclick="M.toast({html: 'Added to your compare'})"><i class="material-icons">compare_arrows</i></button>
                             <?php }?>
                           </div>
                       <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i><?php echo $product['product_name']; ?></span>
-                        <p><?php echo $product['product_description']; ?> </p>
+                        
+                        <p><?php echo $product['others']; ?></p>
+                        <p id="ram_size_id">Ram : <?php echo $product['ram']; ?></p>
+                        <p id="screen_size_id">Screen Size : <?php echo $product['screen_size']; ?></p>
+                        <p id="refresh_rate_id">Refresh Rate : <?php echo $product['refresh_rate']; ?></p>
+                        <p id="resolution_id">Resolution : <?php echo $product['resolution']; ?></p>
+                        <p id="storage_id">Storage : <?php echo $product['storage']; ?></p>
+                        <p id="gpu_id">GPU : <?php echo $product['gpu']; ?></p>
+                        <p id="cpu_id">CPU : <?php echo $product['cpu']; ?></p>
+                        <p id="battery_power_id">Battery Power : <?php echo $product['battery_power']; ?></p>
+                        <p id="touchscreen_id">Touch Screen : <?php echo $product['touchscreen']; ?></p>
+                        <p id="dpi_id">DPI : <?php echo $product['dpi']; ?></p>
+                        <p id="programmable_button_id">Programmable Buttons : <?php echo $product['programmable_buttons']; ?></p>
+                        <p id="wireless_id">Wireless : <?php echo $product['wireless']; ?></p>
                       </div>
                     </div>
                   </div>            
                 </form>
-            <?php } ?>
+            <?php } }else{
+              echo '<h4 class="center section">No products available currently</h4>';
+              echo '<div class="footer-copyright" style="margin-top:510px;margin-bottom:5px;">
+              <div class="container center-align">&copy; 2020 TechMart</div>
+          </div>';
+            }?>
           </div>
         </div>
         <div class="footer-copyright" style="margin-top:175px;margin-bottom:5px;">
             <div class="container center-align">&copy; 2020 TechMart</div>
         </div>
-        <?php } ?>                       
+        <?php } ?>           
+        <!-- product list -->
         <!-- ------------------ -->
         <script>
             // function load_home() {
@@ -216,7 +248,68 @@
             $(document).ready(function(){
               $('.modal').modal();
             });
-
+            //for description            
+            $('.activator').on('click',function(){
+              var category_id = document.getElementById('category_id').value;
+              // alert(document.getElementById('activator').value);
+              // alert(category_id);
+              alert(category_id);
+              // if(category_id == 1){
+              //     $("#ram_size_id").show();
+              //     $("#screen_size_id").show();
+              //     $("#refresh_rate_id").show();
+              //     $("#resolution_id").show();
+              //     $("#storage_id").show();
+              //     $("#gpu_id").show();
+              //     $("#cpu_id").show();
+              //     $("#battery_power_id").show();
+              //     $("#touchscreen_id").show();
+              //     $("#dpi_id").hide();
+              //     $("#programmable_button_id").hide();
+              //     $("#wireless_id").hide();
+              // }else if(category_id == 2){
+              //   alert("mouse");
+              //     $("#ram_size_id").hide();
+              //     $("#screen_size_id").hide();
+              //     $("#refresh_rate_id").hide();
+              //     $("#resolution_id").hide();
+              //     $("#storage_id").hide();
+              //     $("#gpu_id").hide();
+              //     $("#cpu_id").hide();
+              //     $("#battery_power_id").hide();
+              //     $("#touchscreen_id").hide();
+              //     $("#dpi_id").show();
+              //     $("#programmable_button_id").show();
+              //     $("#wireless_id").show();
+              // }else if(category_id == 3){
+              //     $("#ram_size_id").hide();
+              //     $("#screen_size_id").show();
+              //     $("#refresh_rate_id").show();
+              //     $("#resolution_id").show();
+              //     $("#storage_id").hide();
+              //     $("#gpu_id").hide();
+              //     $("#cpu_id").hide();
+              //     $("#battery_power_id").hide();
+              //     $("#touchscreen_id").show();
+              //     $("#dpi_id").hide();
+              //     $("#programmable_button_id").hide();
+              //     $("#wireless_id").hide();
+              // }else{
+              //   alert("nothig");
+              //     $("#ram_size_id").hide();
+              //     $("#screen_size_id").hide();
+              //     $("#refresh_rate_id").hide();
+              //     $("#resolution_id").hide();
+              //     $("#storage_id").hide();
+              //     $("#gpu_id").hide();
+              //     $("#cpu_id").hide();
+              //     $("#battery_power_id").hide();
+              //     $("#touchscreen_id").hide();
+              //     $("#dpi_id").hide();
+              //     $("#programmable_button_id").hide();
+              //     $("#wireless_id").hide();
+              // }
+          });
         </script>
     </body>
 </html>

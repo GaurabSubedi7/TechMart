@@ -119,16 +119,76 @@
         }
 
         public static function uploadProduct($data, $filename){
-            $Istmt = self::$pdo->prepare("INSERT INTO products (product_name,product_price,product_quantity,product_description,product_image,category_id,vendor_id) VALUES(:product_name,:product_price,:product_quantity,:product_description,:product_image,:category_id,:vendor_id)");
+            $Istmt = self::$pdo->prepare("INSERT INTO products (product_name,product_price,product_quantity,product_image,category_id,vendor_id) VALUES(:product_name,:product_price,:product_quantity,:product_image,:category_id,:vendor_id)");
            $Istmt->bindParam(":product_name",$data['product_name']);
            $Istmt->bindParam(":product_price",$data['product_price']);
            $Istmt->bindParam(":product_quantity",$data['product_quantity']);
-           $Istmt->bindParam(":product_description",$data['product_description']);
            $Istmt->bindParam(":product_image",$filename);
            $Istmt->bindParam(":category_id",$data['categories']);
            $Istmt->bindParam(":vendor_id",$data['vendor_id']);
-         
            $Istmt->execute();
+        }
+
+        public static function addDescription($data){
+            $stPid = self::$pdo->prepare("SELECT product_id FROM products WHERE product_name = :product_name");
+            $stPid->bindParam(":product_name",$data['product_name']);
+            $stPid->execute();
+            $pid = $stPid->fetchall();
+            $product_id = $pid[0]['product_id'];
+
+            switch($data['categories']){
+                case 1:
+                    //laptop 
+                    $stmt = self::$pdo->prepare("insert into descriptions (product_id,ram,screen_size,refresh_rate,resolution,storage,gpu,cpu,battery_power,touchscreen,others) values(:pid,:ram,:screen_size,:refresh_rate,:resolution,:storage,:gpu,:cpu,:battery_power,:touchscreen,:others)");
+                    $stmt->bindParam(":pid",$product_id);
+                    $stmt->bindParam(":others",$data['other']);                    
+                    $stmt->bindParam(":ram",$data['ram_size']);                    
+                    $stmt->bindParam(":screen_size",$data['screen_size']);                    
+                    $stmt->bindParam(":refresh_rate",$data['refresh_rate']);                    
+                    $stmt->bindParam(":resolution",$data['resolution']);                    
+                    $stmt->bindParam(":storage",$data['storage']);                    
+                    $stmt->bindParam(":gpu",$data['gpu']);                    
+                    $stmt->bindParam(":cpu",$data['cpu']);                    
+                    $stmt->bindParam(":battery_power",$data['battery_power']);                    
+                    $stmt->bindParam(":touchscreen",$data['touchscreen']);                    
+                break;
+
+                case 2:
+                    //mouse
+                    $stmt = self::$pdo->prepare("insert into descriptions (product_id,dpi,programmable_buttons,wireless,others) values(:pid,:dpi,:buttons,:wireless,:others)"); 
+                    $stmt->bindParam(":pid",$product_id);
+                    $stmt->bindParam(":others",$data['other']);
+                    $stmt->bindParam(":dpi",$data['dpi']);
+                    $stmt->bindParam(":buttons",$data['programmable_button']);
+                    $stmt->bindParam(":wireless",$data['wireless']);
+                break;
+                
+                case 3:
+                    //monitor
+                    $stmt = self::$pdo->prepare("insert into descriptions (product_id,screen_size,refresh_rate,resolution,touchscreen,others) values(:pid,:screen_size,:refresh_rate,:resolution,:toucscreen,:others)");
+                    $stmt->bindParam(":pid",$product_id);
+                    $stmt->bindParam(":others",$data['other']);
+                    $stmt->bindParam(":screen_size",$data['screen_size']);                    
+                    $stmt->bindParam(":refresh_rate",$data['refresh_rate']);                    
+                    $stmt->bindParam(":resolution",$data['resolution']);
+                    $stmt->bindParam(":touchscreen",$data['touchscreen']);
+                break;
+
+                default:
+                    $stmt = self::$pdo->prepare("insert into descriptions (product_id,others) values(:pid,:others)");
+                    $stmt->bindParam(":pid",$product_id);
+                    $stmt->bindParam(":others",$data['other']);
+            }
+            $stmt->execute();
+        }
+
+        public static function GetCategories()
+        {
+            $st = self::$pdo->prepare("select * from categories ORDER BY category_name");
+            $st->execute();
+            
+            $Categoriesdata = $st->fetchall();
+            return $Categoriesdata;
         }
     }   
 ?>

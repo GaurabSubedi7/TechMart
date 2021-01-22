@@ -19,6 +19,7 @@
     Route::set('list_products/cart');
     Route::set('userProfile');
     Route::set('vendorProfile');
+    Route::set('vendor/updateProduct');
     
     Route::get('index.php', function(){
         IndexController::createView('home');
@@ -135,6 +136,10 @@
 
     Route::post('vendor/upload',function(){
         VendorController::ProductPost($_POST);
+    });
+
+    Route::get('vendor/updateProduct',function(){
+        VendorController::showUpdatePage('updateProduct');
     });
 
     /* ------------------------------------- */

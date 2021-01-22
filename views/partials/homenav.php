@@ -77,6 +77,7 @@
         <ul class="dropdown-content accessing" id="profileDrop2">
             <li><a href="vendorProfile" class="waves-effect waves-light">View Profile</a></li>
             <li><a href="vendor/upload" class="waves-effect waves-light">Upload Product</a></li>
+            <li><a href="vendor/updateProduct" class="waves-effect waves-light">My Products</a></li>
             <li><a href="logout" class="waves-effect waves-light">Log out</a></li>
         </ul>
      
