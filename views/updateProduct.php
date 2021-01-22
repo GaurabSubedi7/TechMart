@@ -141,7 +141,7 @@
                           </div>
                       </div>
                       <div class="modal-footer">
-                      <input type="submit" href="#!" class="white-text orange darken-3 modal-close waves-effect waves-dark btn" name="updatebtn" value="Update" onclick="submitForm('update',<?php echo $product['product_id']; ?>)">
+                      <input type="submit" href="#!" class="white-text orange darken-3 modal-close waves-effect waves-dark btn" name="updatebtn" value="Update" onclick="submitForm2('update',<?php echo $product['product_id']; ?>)">
                       </div>
                   </div>
                             <!-- edit ends here -->
@@ -154,6 +154,12 @@
 
             function submitForm(action, id){
                 var form = document.getElementById('thisform');
+                form.action = "?action=" + action + "&id=" + id;
+                form.submit();
+            }
+
+            function submitForm2(action, id){
+                var form = document.getElementById('editForm');
                 form.action = "?action=" + action + "&id=" + id;
                 form.submit();
             }

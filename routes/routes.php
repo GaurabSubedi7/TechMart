@@ -145,6 +145,10 @@
     Route::get('vendor/updateProduct',function(){
         VendorController::removeProduct($_GET,'updateProduct');
     });
+
+    Route::get('vendor/updateProduct',function(){
+        VendorController::updateProduct($_GET,'updateProduct');
+    });
     /* ------------------------------------- */
 
     Route::get('list_users',function(){
