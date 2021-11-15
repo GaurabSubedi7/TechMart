@@ -166,7 +166,7 @@
             var usercheck = /^[a-z]{1}[a-zA-Z0-9.]{2,12}$/gm;
             var firstnamecheck = /^[A-Za-z]{2,}$/gm;
             var lastnamecheck = /^[A-Za-z]{2,}$/gm;
-            var emailcheck = /^[a-z._]+([0-9]+)?@[a-z]+.[a-z]{3,5}$/gm;
+            var emailcheck = /^[a-z]+(\.|_)?[a-z0-9]+@[a-z]+(\.)[a-z]{2,3}(\.[a-z]{2})?$/gm;
             var phonecheck = /^[0-9]{10,}$/gm;
             var passwordcheck =  /^(?=.*[0-9])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{8,16}$/gm;
 
