@@ -52,9 +52,9 @@
         { 
             if (isset($_POST[$btnName]))
             {
-                $checkinguser = UserModel::checkUser($post['username']);
-                if($checkinguser==1)
-                {
+                // $checkinguser = UserModel::checkUser($post['username']);
+                // if($checkinguser==1)
+                // {
                     $stat = 0;
                     $stat = UserModel::addUser($post);
                     $_SESSION['logged_user'] = $post['username'];
@@ -65,8 +65,8 @@
                     $_SESSION['user_avatar'] = $avatars[0]['avatar_image'];
                     header("Location: http://localhost/project5/TechMart/", TRUE, 301);
                     ob_enf_flush();
-                }
-                else if(empty($post['username'])){
+                // }
+                if(empty($post['username'])){
                     echo "<div class='container' id='error'><div class='card-panel  red darken-4 center-align'>Enter a username</div></div>";
                 }
                 else

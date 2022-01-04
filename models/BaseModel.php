@@ -2,11 +2,11 @@
     class BaseModel
     {
         public static $pdo;
-        public function BaseModel()
+        public function __construct()
         {
             $host='localhost';
             $user='root';
-            $pass='';   
+            $pass='';
             $db='techmart';
             try
             {
